@@ -1,24 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-let color = [
-  "#666",
-  "#fff9e6",
-  "#ff6b6b",
-  "#ff5252",
-  "#e6f0ff",
-  "#4ecdc4",
-  "#ffffff",
-  "#3bbfb6",
-  "#ffe66d",
-  "#ffd166",
-  "#06d6a0",
-  "#2d8cf0",
-];
-
-export function getRandonColor() {
-  const randomIndex = Math.floor(Math.random() * color.length) + 1;
-  return color[randomIndex];
-}
 export const GlobalStyles = createGlobalStyle`
 
 :root{
@@ -35,7 +16,7 @@ export const GlobalStyles = createGlobalStyle`
   --input-placeholder:#666;
   --paper-white: #fffdf5;
 
-  /* Doodle Border Radiuses */
+  /* Estilização  do arredondamento das bordas */
   --sketch-radius-1: .8rem 2.4rem .8rem 2.4rem / 2.4rem .8rem 2.4rem .8rem;
   --sketch-radius-2: 2.4rem .8rem 2.4rem .8rem / .8rem 2.4rem .8rem 2.4rem;
   --sketch-radius-btn: 1.6rem .5rem 1.6rem .5rem / .5rem 1.6rem .5rem 1.6rem;
@@ -76,7 +57,8 @@ html{
     text-rendering: optimizeSpeed;
     user-select: none;
     font-family:var(--lato);
-    background-color: ${(props) => props.color || "var(--bg-color)"};
+    /* altera a cor com base no valor do parâmetro passado  */
+    background-color: ${(props) => props.color || "#ffffff"};
     transition: background-color 0.5s ease;
 
     display:flex;
