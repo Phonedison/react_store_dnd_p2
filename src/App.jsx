@@ -1,5 +1,5 @@
-import { MonstersPage } from "../src/pages/RpgPages/Monsters";
+import { Login } from "./pages/AuthenticationPages/Login";
 
 export const App = () => {
-  return <MonstersPage />;
+  return <Login />;
 };
