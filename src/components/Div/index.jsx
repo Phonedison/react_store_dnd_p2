@@ -1,4 +1,4 @@
-import { Div } from "./style";
+import { Div } from "./styles";
 
 /**
  * Componente Div Customizado.
