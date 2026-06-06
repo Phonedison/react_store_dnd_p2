@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { doodleWiggle } from "../../../styles/animations";
+import { DoodleWiggle } from "../../styles/animation/doodleWiggle";
 
 export const Div = styled.div`
   ${(props) =>
@@ -62,7 +62,7 @@ export const Div = styled.div`
       z-index: 2;
 
       &:hover .doodle-title {
-        animation: ${doodleWiggle} 0.5s ease-in-out;
+        animation: ${DoodleWiggle} 0.5s ease-in-out;
       }
     `}
 

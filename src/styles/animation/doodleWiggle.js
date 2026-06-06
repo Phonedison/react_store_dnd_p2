@@ -1,7 +1,7 @@
 import { keyframes } from "styled-components";
 
 //animação das frases balançando
-export const doodleWiggle = keyframes`
+export const DoodleWiggle = keyframes`
   0%,
   100% {
     transform: rotate(-3deg);
