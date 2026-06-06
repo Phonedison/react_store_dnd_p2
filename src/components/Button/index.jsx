@@ -15,12 +15,8 @@ import { Button } from "./styles";
  * </ButtonComponents>
  */
 
-export const ButtonComponents = ({ children, tipo, ...props }) => {
-  return (
-    <>
-      <Button $type={tipo} {...props}>
-        {children}
-      </Button>
-    </>
-  );
-};
+export const ButtonComponents = ({ children, tipo, ...props }) => (
+  <Button $type={tipo} {...props}>
+    {children}
+  </Button>
+);
