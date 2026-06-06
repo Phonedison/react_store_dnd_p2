@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GlobalStyles } from ".";
+import { GlobalStyles } from "./styles";
 
 //array da lista de cores
 let color = [
