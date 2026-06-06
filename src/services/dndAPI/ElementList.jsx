@@ -38,15 +38,3 @@ export const useElementList = (id, element) => {
 
   return { dados, erro, loading };
 };
-
-
-
-/*
-  export const ElementList = async({...props}) =>{
-  await getElements(props.id,props.element)
-    .then((result)=>setDados(result.data.results))
-    .catch((error)=> setError(error.message || "Erro ao carregar " + props.elements))
-    .finally(()=>setFinally(false));
-  return [Dados, erro, finally];
-    }
-*/
