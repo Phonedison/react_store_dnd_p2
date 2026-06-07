@@ -21,7 +21,7 @@ import { getElements } from "../dndAPI";
  * // Buscando apenas por elemento e idioma (sem precisar passar null para o ID)
  * const { dados, erro, loading } = useElementList({ element: '/monsters', lang: 'pt-BR' });
  */
-export const useElementList = (element, id = null, lang = null) => {
+export const useElementList = ({ element, id = null, lang = null }) => {
   const [dados, setDados] = useState([]);
   const [erro, setErro] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -65,7 +65,7 @@ export const useElementList = (element, id = null, lang = null) => {
  * * @param {Object} element - O objeto que contém o caminho da imagem (.image).
  * @returns {[Object|null, string|null, boolean]} Array contendo [dados, erro, loading].
  */
-export const useElementListImage = (element) => {
+export const useElementListImage = ({ element }) => {
   const [dados, setDados] = useState(null);
   const [erro, setErro] = useState(null);
   const [loading, setLoading] = useState(!!element?.image);
