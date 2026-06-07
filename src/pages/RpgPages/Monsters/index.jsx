@@ -4,11 +4,11 @@ import { ButtonComponents } from "../../../components/Button";
 import { DivComponents } from "../../../components/Div";
 import { FormComponents } from "../../../components/Form";
 import { CardEnemy } from "../../../features/Moster/CardMonster";
-import { useElementList } from "../../../services/dndAPI/ElementList";
+import { useElementList } from "../../../services/CustomHooks";
 import { BackgroundColorComponents } from "../../../styles/globalStyle";
 
 export const MonstersPage = () => {
-  const navigate = Navigate("/login");
+  const navigate = Navigate("/");
 
   const [paginaAtual, setPaginaAtual] = useState(1);
   const itensPorPagina = 10;
@@ -17,7 +17,10 @@ export const MonstersPage = () => {
     navigate("/login");
   };
   /* puxando os dados do Monstro utilizando o Componente useElementList */
-  const { dados, erro, loading } = useElementList(null, "/monsters");
+  const { dados, erro, loading } = useElementList({
+    element: "monsters",
+    lang: "pt-BR",
+  });
 
   const indiceUltimoItem = paginaAtual * itensPorPagina;
   const indicePrimeiroItem = indiceUltimoItem - itensPorPagina;
@@ -74,7 +77,7 @@ export const MonstersPage = () => {
           <DivComponents $name="DoodleLimit">
             <DivComponents $name="DoodleLine">
               {monstrosDaPagina.map((inimigo) => (
-                <CardEnemy enemy={inimigo} />
+                <CardEnemy key={inimigo.id} enemy={inimigo} />
               ))}
             </DivComponents>
           </DivComponents>
