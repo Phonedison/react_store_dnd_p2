@@ -65,38 +65,43 @@ export const useElementList = ({ element, id = null, lang = null }) => {
  * * @param {Object} element - O objeto que contém o caminho da imagem (.image).
  * @returns {[Object|null, string|null, boolean]} Array contendo [dados, erro, loading].
  */
-export const useElementListImage = ({ element }) => {
+export const useElementListImage = (element) => {
   const [dados, setDados] = useState(null);
   const [erro, setErro] = useState(null);
-  const [loading, setLoading] = useState(!!element?.image);
+  const [loading, setLoading] = useState(!!element?.url);
 
   useEffect(() => {
-    if (!element?.image) return;
+    if (!element?.url) return;
 
     let request = true;
+    setLoading(true);
 
-    fetch(`https://www.dnd5eapi.co${element.image}`)
+    fetch(`https://www.dnd5eapi.co${element.url}`)
       .then((res) => {
         if (!res.ok) throw new Error(`Erro na requisição: ${res.status}`);
         return res.json();
       })
       .then((data) => {
-        if (request) setDados(data);
+        if (request) {
+          if (data.image) {
+            data.imageUrl = `https://www.dnd5eapi.co${data.image}`;
+          } else {
+            data.imageUrl = `https://www.dnd5eapi.co${element.url}/image`;
+          }
+          setDados(data);
+        }
       })
       .catch((error) => {
-        if (request) setErro(error.message || "Erro ao carregar imagem");
+        if (request) setErro(error.message || "Erro ao carregar dados");
       })
       .finally(() => {
         if (request) setLoading(false);
       });
 
-    // Limpeza dos dados puxados anteriormente.
     return () => {
       request = false;
-      setLoading(!!element?.image);
-      setErro(null);
     };
-  }, [element?.image]);
+  }, [element?.url]);
 
   return [dados, erro, loading];
 };
