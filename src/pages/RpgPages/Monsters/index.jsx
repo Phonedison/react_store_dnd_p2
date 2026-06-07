@@ -4,7 +4,7 @@ import { ButtonComponents } from "../../../components/Button";
 import { DivComponents } from "../../../components/Div";
 import { FormComponents } from "../../../components/Form";
 import { CardEnemy } from "../../../features/Moster/CardMonster";
-import { useElementList } from "../../../services/dndAPI/ElementList";
+import { useElementList } from "../../../services/CustomHooks";
 import { BackgroundColorComponents } from "../../../styles/globalStyle";
 
 export const MonstersPage = () => {
