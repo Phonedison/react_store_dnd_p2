@@ -11,10 +11,11 @@ export const CardEnemy = ({ enemy }) => {
   //   navigate(enemy.index);
   // };
 
-  const { object, erro, loading } = useElementListImage(enemy);
+  const [object, erro, loading] = useElementListImage(enemy);
+  console.log(`Dados do monstro ${enemy.name}:`, object);
 
-  if (!loading) {
-    return <DivComponents>Carregando dados de {enemy.$name}...</DivComponents>;
+  if (loading) {
+    return <DivComponents>Carregando dados de {enemy.name}...</DivComponents>;
   }
 
   if (erro) {
@@ -23,20 +24,21 @@ export const CardEnemy = ({ enemy }) => {
     );
   }
 
-  const urlImages = object?.image
-    ? `https://www.dnd5eapi.co${object.image}`
-    : imagem_padrao;
+  const urlImages = object?.imageUrl ? object.imageUrl : imagem_padrao;
 
   return (
     <DivComponents $name="DoodleCardScene">
-      <DivComponents $name="DoodleCardInner" key={object.index} $scale>
+      <DivComponents $name="DoodleCardInner" $scale>
         <DivComponents $name="DoodleCardFront">
           <DivComponents $name="DoodleTitle" className="doodle-title">
             {enemy.name}
           </DivComponents>
           <ImageComponents
             src={urlImages}
-            alt={`imagem representativa de ${object.name}`}
+            alt={`imagem representativa de ${enemy.name}`}
+            onError={(error) => {
+              error.target.src = imagem_padrao;
+            }}
           />
         </DivComponents>
       </DivComponents>

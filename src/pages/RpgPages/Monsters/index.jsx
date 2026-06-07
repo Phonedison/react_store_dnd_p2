@@ -8,7 +8,7 @@ import { useElementList } from "../../../services/CustomHooks";
 import { BackgroundColorComponents } from "../../../styles/globalStyle";
 
 export const MonstersPage = () => {
-  const navigate = Navigate("/login");
+  const navigate = Navigate("/");
 
   const [paginaAtual, setPaginaAtual] = useState(1);
   const itensPorPagina = 10;
@@ -18,7 +18,7 @@ export const MonstersPage = () => {
   };
   /* puxando os dados do Monstro utilizando o Componente useElementList */
   const { dados, erro, loading } = useElementList({
-    element: "/monsters",
+    element: "monsters",
     lang: "pt-BR",
   });
 
@@ -77,7 +77,7 @@ export const MonstersPage = () => {
           <DivComponents $name="DoodleLimit">
             <DivComponents $name="DoodleLine">
               {monstrosDaPagina.map((inimigo) => (
-                <CardEnemy enemy={inimigo} />
+                <CardEnemy key={inimigo.id} enemy={inimigo} />
               ))}
             </DivComponents>
           </DivComponents>
