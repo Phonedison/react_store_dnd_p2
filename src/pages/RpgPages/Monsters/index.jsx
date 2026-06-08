@@ -5,6 +5,7 @@ import { DivComponents } from "../../../components/Div";
 import { FormComponents } from "../../../components/Form";
 import { CardEnemy } from "../../../features/Moster/CardMonster";
 import { useElementList } from "../../../services/CustomHooks";
+import { JSONExport } from "../../../services/JsonExport";
 import { BackgroundColorComponents } from "../../../styles/globalStyle";
 
 export const MonstersPage = () => {
@@ -65,6 +66,8 @@ export const MonstersPage = () => {
               >
                 Próxima
               </ButtonComponents>
+              {<JSONExport element={monstrosDaPagina} nomeArquivo="monstros" />}
+              {/* teste da config de exportação*/}
             </DivComponents>
           )}
         </DivComponents>
