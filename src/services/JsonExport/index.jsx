@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ButtonComponents } from "../../components/Button";
+import { Button } from "../../components/Button";
 
 // transforma onjeto javascript em Json e um link de download
 const gerarJsonUrl = (objeto) => {
@@ -112,8 +112,8 @@ export const JSONExport = ({ element, nomeArquivo = "arquivo" }) => {
   };
 
   return (
-    <ButtonComponents tipo={"jsonExport"} onClick={handleDownload}>
+    <Button tipo={"jsonExport"} onClick={handleDownload}>
       {"Download"}
-    </ButtonComponents>
+    </Button>
   );
 };

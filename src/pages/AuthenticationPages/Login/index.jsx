@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router";
-import { ButtonComponents } from "../../../components/Button";
-import { DivComponents } from "../../../components/Div";
-import { FormComponents } from "../../../components/Form";
-import { InputComponents } from "../../../components/Input";
-import { BackgroundColorComponents } from "../../../styles/globalStyle";
+import { Button } from "../../../components/Button";
+import { Div } from "../../../components/Div";
+import { Form } from "../../../components/Form";
+import { Input } from "../../../components/Input";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -13,43 +12,33 @@ export const Login = () => {
 
   return (
     <>
-      <BackgroundColorComponents />
-      <title>Login</title>
-      <DivComponents $name="DoodleWrapper">
-        <DivComponents $name="DoodleCardScene">
-          <DivComponents $name="DoodleCardInner">
-            <DivComponents $name="DoodleCardFront">
-              <DivComponents $name="DoodleTitle" className="doodle-title">
-                Seja Bem vindo!
-              </DivComponents>
-              <FormComponents>
-                <DivComponents $name="DoodleInputWrapper">
-                  <InputComponents
-                    name="email"
-                    placeholder="Email"
-                    type="email"
-                    required
-                  />
-                </DivComponents>
-                <DivComponents $name="DoodleInputWrapper">
-                  <InputComponents
-                    name="password"
-                    placeholder="Password"
-                    type="password"
-                    required
-                  />
-                </DivComponents>
-                <DivComponents $name="DoodleButtonGroup">
-                  <ButtonComponents tipo="confirm" onClick={handleClick}>
-                    Confirmar
-                  </ButtonComponents>
-                  <ButtonComponents tipo="cancel">Cancelar</ButtonComponents>
-                </DivComponents>
-              </FormComponents>
-            </DivComponents>
-          </DivComponents>
-        </DivComponents>
-      </DivComponents>
+      <title>D&D - Login</title>
+      <Div className="container">
+        <Div className="borda-rabisco">
+          <Div className="cartao-frente">
+            <Div className="titulo">Seja Bem vindo!</Div>
+            <Form className="container">
+              <Div className="container-input">
+                <Input name="email" placeholder="Email" type="email" required />
+              </Div>
+              <Div className="container-input">
+                <Input
+                  name="password"
+                  placeholder="Password"
+                  type="password"
+                  required
+                />
+              </Div>
+              <Div className="container-botoes">
+                <Button className="button confirm" onClick={handleClick}>
+                  Confirmar
+                </Button>
+                <Button className="button cancel">Cancelar</Button>
+              </Div>
+            </Form>
+          </Div>
+        </Div>
+      </Div>
     </>
   );
 };

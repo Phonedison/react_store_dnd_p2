@@ -1,5 +1,3 @@
-import { Div } from "./styles";
-
 /**
  * Componente Div Customizado.
  * * @component
@@ -10,8 +8,6 @@ import { Div } from "./styles";
  *
  * * @example
  *  // Exemplo de uso:
- * <DivComponents $name="DoodleTitle" className="doodle-title">Welcome!</DivComponents>
+ * <Div $name="DoodleTitle" className="doodle-title">Welcome!</Div>
  **/
-export const DivComponents = ({ children, ...props }) => (
-  <Div {...props}>{children}</Div>
-);
+export const Div = ({ children, ...props }) => <div {...props}>{children}</div>;

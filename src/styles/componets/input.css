@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-export const Input = styled.input`
+input {
   width: var(--input-width);
   height: var(--input-height);
   padding: 0.4rem 1.6rem;
@@ -30,6 +28,6 @@ export const Input = styled.input`
     border: var(--border-width) solid var(--input-focus);
     border-radius: var(--sketch-radius-2);
     background-color: var(--paper-white);
-    box-shadow: 4px 4px 0px var(--ink);
+    box-shadow: .4rem .4rem 0 var(--ink);
   }
-`;
+}

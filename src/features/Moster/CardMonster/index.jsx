@@ -1,5 +1,5 @@
-import { DivComponents } from "../../../components/Div";
-import { ImageComponents } from "../../../components/Img";
+import { Div } from "../../../components/Div";
+import { ImagePolaroid } from "../../../components/Img";
 import { useElementListImage } from "../../../services/CustomHooks";
 
 const imagem_padrao =
@@ -15,33 +15,31 @@ export const CardEnemy = ({ enemy }) => {
   console.log(`Dados do monstro ${enemy.name}:`, object);
 
   if (loading) {
-    return <DivComponents>Carregando dados de {enemy.name}...</DivComponents>;
+    return <Div>Carregando dados de {enemy.name}...</Div>;
   }
 
   if (erro) {
-    return (
-      <DivComponents>Erro ao carregar imagem de {enemy.name}</DivComponents>
-    );
+    return <Div>Erro ao carregar imagem de {enemy.name}</Div>;
   }
 
   const urlImages = object?.imageUrl ? object.imageUrl : imagem_padrao;
 
   return (
-    <DivComponents $name="DoodleCardScene">
-      <DivComponents $name="DoodleCardInner" $scale>
-        <DivComponents $name="DoodleCardFront">
-          <DivComponents $name="DoodleTitle" className="doodle-title">
+    <Div $name="DoodleCardScene">
+      <Div $name="DoodleCardInner" $scale>
+        <Div $name="DoodleCardFront">
+          <Div $name="DoodleTitle" className="doodle-title">
             {enemy.name}
-          </DivComponents>
-          <ImageComponents
+          </Div>
+          <ImagePolaroid
             src={urlImages}
             alt={`imagem representativa de ${enemy.name}`}
             onError={(error) => {
               error.target.src = imagem_padrao;
             }}
           />
-        </DivComponents>
-      </DivComponents>
-    </DivComponents>
+        </Div>
+      </Div>
+    </Div>
   );
 };

@@ -1,5 +1,3 @@
-import { Button } from "./styles";
-
 /**
  * Componente Botão Customizado.
  * * @component
@@ -10,13 +8,13 @@ import { Button } from "./styles";
  *
  * * @example
  * // Exemplo de uso:
- * <ButtonComponents tipo="primary" onClick={() => console.log('Clicou!')}>
+ * <Button tipo="primary" onClick={() => console.log('Clicou!')}>
  * Salvar
- * </ButtonComponents>
+ * </Button>
  */
 
-export const ButtonComponents = ({ children, tipo, ...props }) => (
-  <Button $type={tipo} {...props}>
+export const Button = ({ children, tipo, ...props }) => (
+  <button $type={tipo} {...props}>
     {children}
-  </Button>
+  </button>
 );

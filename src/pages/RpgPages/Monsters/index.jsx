@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Navigate } from "react-router";
-import { ButtonComponents } from "../../../components/Button";
-import { DivComponents } from "../../../components/Div";
-import { FormComponents } from "../../../components/Form";
+import { Button } from "../../../components/Button";
+import { Div } from "../../../components/Div";
+import { Form } from "../../../components/Form";
 import { CardEnemy } from "../../../features/Moster/CardMonster";
 import { useElementList } from "../../../services/CustomHooks";
 import { JSONExport } from "../../../services/JsonExport";
-import { BackgroundColorComponents } from "../../../styles/globalStyle";
 
 export const MonstersPage = () => {
   const navigate = Navigate("/");
@@ -30,62 +29,61 @@ export const MonstersPage = () => {
 
   return (
     <>
-      <BackgroundColorComponents />
-      <FormComponents>
-        <DivComponents $name="DoodleHeaderTitle">
+      <Form>
+        <Div $name="DoodleHeaderTitle">
           {loading ? (
             ""
           ) : (
-            <ButtonComponents tipo="return" onClick={handleClick}>
+            <Button tipo="return" onClick={handleClick}>
               Voltar
-            </ButtonComponents>
+            </Button>
           )}
-          <DivComponents $name="DoodleTitle">
+          <Div $name="DoodleTitle">
             <h1>Monstros D&D 5e</h1>
-          </DivComponents>
+          </Div>
           {loading ? (
             ""
           ) : (
-            <DivComponents $name="DoodleButtonGroup">
-              <ButtonComponents
+            <Div $name="DoodleButtonGroup">
+              <Button
                 tipo="navigation"
                 type="button"
                 onClick={() => setPaginaAtual((prev) => prev - 1)}
                 disabled={paginaAtual === 1}
               >
                 Anterior
-              </ButtonComponents>
+              </Button>
               <span>
                 Página {paginaAtual} de {totalPaginas}
               </span>
-              <ButtonComponents
+              <Button
                 tipo="navigation"
                 type="button"
                 onClick={() => setPaginaAtual((prev) => prev + 1)}
                 disabled={paginaAtual === totalPaginas}
               >
                 Próxima
-              </ButtonComponents>
+              </Button>
               {<JSONExport element={monstrosDaPagina} nomeArquivo="monstros" />}
               {/* teste da config de exportação*/}
-            </DivComponents>
+            </Div>
           )}
-        </DivComponents>
+        </Div>
         {erro && <p>{erro}</p>}
         {loading ? (
           <>
             <h2>Loading...</h2>
           </>
         ) : (
-          <DivComponents $name="DoodleLimit">
-            <DivComponents $name="DoodleLine">
+          <Div $name="DoodleLimit">
+            <Div $name="DoodleLine">
               {monstrosDaPagina.map((inimigo) => (
                 <CardEnemy key={inimigo.id} enemy={inimigo} />
               ))}
-            </DivComponents>
-          </DivComponents>
+            </Div>
+          </Div>
         )}
-      </FormComponents>
+      </Form>
     </>
   );
 };
