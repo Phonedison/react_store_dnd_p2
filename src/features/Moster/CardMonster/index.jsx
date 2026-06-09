@@ -1,47 +1,81 @@
-import { DivComponents } from "../../../components/Div";
-import { ImageComponents } from "../../../components/Img";
+import { useState } from "react";
+import { Div } from "../../../components/Div";
+import { ImagePolaroid } from "../../../components/Img";
 import { useElementListImage } from "../../../services/CustomHooks";
 
 const imagem_padrao =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTErdgbxMUdTJs1QVlGKym_uTNRaF_OQEk3XA&s";
 
 export const CardEnemy = ({ enemy }) => {
-  // const navigate = useNavigate();
-  // const navigateToDetails = () => {
-  //   navigate(enemy.index);
-  // };
-
   const [object, erro, loading] = useElementListImage(enemy);
-  console.log(`Dados do monstro ${enemy.name}:`, object);
+  const [imgSrc, setImgSrc] = useState(null);
+  const [verso, setVerso] = useState(false);
 
   if (loading) {
-    return <DivComponents>Carregando dados de {enemy.name}...</DivComponents>;
+    return <Div className="titulo-alternativo">Carregando {enemy.name}...</Div>;
   }
 
   if (erro) {
-    return (
-      <DivComponents>Erro ao carregar imagem de {enemy.name}</DivComponents>
-    );
+    return <Div className="titulo-alternativo">Erro em {enemy.name}</Div>;
   }
 
   const urlImages = object?.imageUrl ? object.imageUrl : imagem_padrao;
 
+  const handleCardClick = () => {
+    setVerso(!verso);
+  };
   return (
-    <DivComponents $name="DoodleCardScene">
-      <DivComponents $name="DoodleCardInner" $scale>
-        <DivComponents $name="DoodleCardFront">
-          <DivComponents $name="DoodleTitle" className="doodle-title">
-            {enemy.name}
-          </DivComponents>
-          <ImageComponents
-            src={urlImages}
+    <Div className="cartao" onClick={handleCardClick}>
+      <Div className={`cartao-interno ${verso ? "virado" : ""}`}>
+        <Div className="cartao-frente">
+          <Div className="titulo">
+            <h4 className="title-monster-card">{enemy.name}</h4>
+          </Div>
+
+          <ImagePolaroid
+            src={imgSrc || urlImages}
             alt={`imagem representativa de ${enemy.name}`}
-            onError={(error) => {
-              error.target.src = imagem_padrao;
+            onError={() => {
+              if (!imgSrc) setImgSrc(imagem_padrao);
             }}
           />
-        </DivComponents>
-      </DivComponents>
-    </DivComponents>
+        </Div>
+        <Div className="cartao-verso">
+          <Div className="titulo">
+            <h4 className="title-monster-card">{enemy.name}</h4>
+          </Div>
+
+          <Div>
+            <ul style={{ textAlign: "left", listStylePosition: "inside" }}>
+              <li>
+                <strong>Alinhamento:</strong> {enemy.alignment}
+              </li>
+              <li>
+                <strong>Classe de Armadura:</strong> {enemy.armor_class}
+              </li>
+              <li>
+                <strong>Pontos de Vida:</strong> {enemy.hit_points}
+              </li>
+              <li>
+                <strong>Idiomas:</strong> {enemy.languages}
+              </li>
+              <li>
+                <strong>Habilidades Especiais:</strong>{" "}
+                {enemy.special_abilities}
+              </li>
+              <li>
+                <strong>Conjurador:</strong> {enemy.spellcasting}
+              </li>
+              <li>
+                <strong>Velocidade:</strong> {enemy.speed}
+              </li>
+              <li>
+                <strong>XP:</strong> {enemy.xp}
+              </li>
+            </ul>
+          </Div>
+        </Div>
+      </Div>
+    </Div>
   );
 };

@@ -1,5 +1,3 @@
-import { Form } from "./styles";
-
 /**
  * Componente de Formulário Customizado.
  * * @component
@@ -7,8 +5,10 @@ import { Form } from "./styles";
  * @param {import("react").ReactNode} props.children - Elementos internos do formulário (ex: inputs, botões, labels).
  * * @example
  * // Exemplo de uso:
- * <FormComponents>
+ * <Form>
  * <input type="password" placeholder="Digite sua senha" />
- * </FormComponents>
+ * </Form>
  */
-export const FormComponents = ({ children }) => <Form>{children}</Form>;
+export const Form = ({ children, ...props }) => (
+  <form {...props}>{children}</form>
+);

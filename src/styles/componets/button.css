@@ -1,0 +1,72 @@
+.button {
+  margin: 0.8rem 0;
+  width: var(--btn-width);
+  height: var(--btn-height);
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.4rem;
+  color: var(--ink);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-btn);
+  box-shadow: 0.4rem 0.4rem 0 var(--ink);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  transform: rotate(-1deg);
+
+  &:active {
+    transform: translate(0.3rem, 0.3rem) rotate(0deg);
+    box-shadow: 0 0 0 var(--ink);
+  }
+
+  &.cancel {
+    background-color: var(--primary-btn);
+
+    &:hover {
+      background-color: var(--primary-btn-hover);
+      transform: translateY(-0.2rem) rotate(-2deg);
+      box-shadow: 0.5rem 0.5rem 0 var(--ink);
+    }
+  }
+
+  &.confirm {
+    background-color: var(--secondary-btn);
+    transform: rotate(1deg);
+
+    &:hover {
+      background-color: var(--secondary-btn-hover);
+      transform: translateY(-0.2rem) rotate(2deg);
+      box-shadow: 0.5rem 0.5rem 0 var(--ink);
+    }
+  }
+
+  &.navigation {
+    background-color: var(--secondary-btn);
+    transform: rotate(1deg);
+
+    &:hover {
+      background-color: var(--secondary-btn-hover);
+      transform: translateY(-0.2rem) rotate(2deg);
+      box-shadow: 0.5rem 0.5rem 0 var(--ink);
+    }
+
+    &:disabled {
+      background-color: var(--input-placeholder);
+      color: var(--ink);
+      transform: none;
+      box-shadow: inherit 0.5rem 0.5rem 0 var(--input-placeholder);
+      cursor: not-allowed;
+    }
+  }
+
+  &.return {
+    background-color: var(--secondary-btn);
+    transform: rotate(1deg);
+
+    &:hover {
+      background-color: var(--secondary-btn-hover);
+      transform: translateY(-0.2rem) rotate(2deg);
+      box-shadow: 0.5rem 0.5rem 0 var(--ink);
+    }
+  }
+}
