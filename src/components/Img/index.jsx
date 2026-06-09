@@ -7,9 +7,9 @@
  * <ImagePolaroid src="https://exemplo.com/foto.jpg" alt="Descrição da imagem" />
  */
 export const ImagePolaroid = ({ ...props }) => (
-  <div className="pilha-polariod">
-    <div className="cartao">
-      <div className="polaroid">
+  <div className="pilha-polaroid">
+    <div className="polaroid">
+      <div className="img-container">
         <img {...props} />
       </div>
     </div>

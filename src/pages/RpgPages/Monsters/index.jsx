@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { Navigate } from "react-router";
+import { useNavigate } from "react-router";
 import { Button } from "../../../components/Button";
 import { Div } from "../../../components/Div";
-import { Form } from "../../../components/Form";
 import { CardEnemy } from "../../../features/Moster/CardMonster";
 import { useElementList } from "../../../services/CustomHooks";
 import { JSONExport } from "../../../services/JsonExport";
 
 export const MonstersPage = () => {
-  const navigate = Navigate("/");
+  const navigate = useNavigate();
 
   const [paginaAtual, setPaginaAtual] = useState(1);
   const itensPorPagina = 10;
@@ -16,7 +15,7 @@ export const MonstersPage = () => {
   const handleClick = () => {
     navigate("/login");
   };
-  /* puxando os dados do Monstro utilizando o Componente useElementList */
+
   const { dados, erro, loading } = useElementList({
     element: "monsters",
     lang: "pt-BR",
@@ -24,66 +23,69 @@ export const MonstersPage = () => {
 
   const indiceUltimoItem = paginaAtual * itensPorPagina;
   const indicePrimeiroItem = indiceUltimoItem - itensPorPagina;
-  const monstrosDaPagina = dados.slice(indicePrimeiroItem, indiceUltimoItem);
-  const totalPaginas = Math.ceil(dados.length / itensPorPagina);
+  const monstrosDaPagina =
+    dados?.slice(indicePrimeiroItem, indiceUltimoItem) || [];
+  const totalPaginas = Math.ceil((dados?.length || 0) / itensPorPagina);
 
   return (
     <>
-      <Form>
-        <Div $name="DoodleHeaderTitle">
-          {loading ? (
-            ""
-          ) : (
-            <Button tipo="return" onClick={handleClick}>
-              Voltar
-            </Button>
-          )}
-          <Div $name="DoodleTitle">
-            <h1>Monstros D&D 5e</h1>
+      <Div className="container">
+        <Div className="cabecalho">
+          <Div className="titulo-cabecalho">
+            {!loading && (
+              <Button className="button return" onClick={handleClick}>
+                Voltar
+              </Button>
+            )}
+
+            <Div className="titulo">
+              <h1>Monstros D&D 5e</h1>
+            </Div>
+
+            {!loading && (
+              <Div className="container-botoes">
+                <Button
+                  className="button navigation"
+                  type="button"
+                  onClick={() => setPaginaAtual((prev) => prev - 1)}
+                  disabled={paginaAtual === 1}
+                >
+                  Anterior
+                </Button>
+
+                <span>
+                  Página {paginaAtual} de {totalPaginas}
+                </span>
+
+                <Button
+                  className="button navigation"
+                  type="button"
+                  onClick={() => setPaginaAtual((prev) => prev + 1)}
+                  disabled={paginaAtual === totalPaginas}
+                >
+                  Próxima
+                </Button>
+
+                <JSONExport element={monstrosDaPagina} nomeArquivo="monstros" />
+              </Div>
+            )}
           </Div>
-          {loading ? (
-            ""
-          ) : (
-            <Div $name="DoodleButtonGroup">
-              <Button
-                tipo="navigation"
-                type="button"
-                onClick={() => setPaginaAtual((prev) => prev - 1)}
-                disabled={paginaAtual === 1}
-              >
-                Anterior
-              </Button>
-              <span>
-                Página {paginaAtual} de {totalPaginas}
-              </span>
-              <Button
-                tipo="navigation"
-                type="button"
-                onClick={() => setPaginaAtual((prev) => prev + 1)}
-                disabled={paginaAtual === totalPaginas}
-              >
-                Próxima
-              </Button>
-              {<JSONExport element={monstrosDaPagina} nomeArquivo="monstros" />}
-              {/* teste da config de exportação*/}
-            </Div>
-          )}
         </Div>
-        {erro && <p>{erro}</p>}
+
+        {erro && <p className="erro-mensagem">{erro}</p>}
+
         {loading ? (
-          <>
+          <Div className="titulo titulo-alternativo">
             <h2>Loading...</h2>
-          </>
+          </Div>
         ) : (
-          <Div $name="DoodleLimit">
-            <Div $name="DoodleLine">
-              {monstrosDaPagina.map((inimigo) => (
-                <CardEnemy key={inimigo.id} enemy={inimigo} />
-              ))}
-            </Div>
+          <Div className="borda-rabisco em-linha">
+            {monstrosDaPagina.map((inimigo) => (
+              <CardEnemy key={inimigo.id} enemy={inimigo} />
+            ))}
           </Div>
         )}
-      </Form>
+      </Div>
     </>
   );
 };

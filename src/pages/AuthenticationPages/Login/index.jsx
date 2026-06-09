@@ -6,36 +6,53 @@ import { Input } from "../../../components/Input";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const handleClick = () => {
+
+  const handleClick = (e) => {
+    e.preventDefault();
     navigate("/monsters");
   };
 
   return (
     <>
       <title>D&D - Login</title>
+
       <Div className="container">
         <Div className="borda-rabisco">
-          <Div className="cartao-frente">
-            <Div className="titulo">Seja Bem vindo!</Div>
-            <Form className="container">
-              <Div className="container-input">
-                <Input name="email" placeholder="Email" type="email" required />
+          <Div className="cartao">
+            <Div className="cartao-interno">
+              <Div className="cartao-frente">
+                <Div className="titulo">Seja Bem vindo!</Div>
+
+                <Form className="container">
+                  <Div className="container-input">
+                    <Input
+                      name="email"
+                      placeholder="Email"
+                      type="email"
+                      required
+                    />
+                  </Div>
+
+                  <Div className="container-input">
+                    <Input
+                      name="password"
+                      placeholder="Password"
+                      type="password"
+                      required
+                    />
+                  </Div>
+
+                  <Div className="container-botoes">
+                    <Button className="button confirm" onClick={handleClick}>
+                      Confirmar
+                    </Button>
+                    <Button className="button cancel" type="button">
+                      Cancelar
+                    </Button>
+                  </Div>
+                </Form>
               </Div>
-              <Div className="container-input">
-                <Input
-                  name="password"
-                  placeholder="Password"
-                  type="password"
-                  required
-                />
-              </Div>
-              <Div className="container-botoes">
-                <Button className="button confirm" onClick={handleClick}>
-                  Confirmar
-                </Button>
-                <Button className="button cancel">Cancelar</Button>
-              </Div>
-            </Form>
+            </Div>
           </Div>
         </Div>
       </Div>
