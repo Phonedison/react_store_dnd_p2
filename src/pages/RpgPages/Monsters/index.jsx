@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { Button } from "../../../components/Button";
 import { Div } from "../../../components/Div";
 import { CardEnemy } from "../../../features/Moster/CardMonster";
-import { useElementList } from "../../../services/CustomHooks";
+import { useElementList } from "../../../hooks";
 import { JSONExport } from "../../../services/JsonExport";
 
 export const MonstersPage = () => {

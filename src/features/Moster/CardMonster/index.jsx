@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Div } from "../../../components/Div";
 import { ImagePolaroid } from "../../../components/Img";
-import { useElementListImage } from "../../../services/CustomHooks";
+import { useElementListImage } from "../../../hooks";
 
 const imagem_padrao =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTErdgbxMUdTJs1QVlGKym_uTNRaF_OQEk3XA&s";
@@ -46,31 +46,23 @@ export const CardEnemy = ({ enemy }) => {
           </Div>
 
           <Div>
-            <ul style={{ textAlign: "left", listStylePosition: "inside" }}>
+            <ul>
               <li>
-                <strong>Alinhamento:</strong> {enemy.alignment}
+                <strong>Alinhamento:</strong> {object?.alignment || "N/A"}
               </li>
               <li>
-                <strong>Classe de Armadura:</strong> {enemy.armor_class}
+                <strong>Classe de Armadura:</strong>{" "}
+                {object?.armor_class?.[0]?.value || "N/A"}
               </li>
               <li>
-                <strong>Pontos de Vida:</strong> {enemy.hit_points}
+                <strong>Pontos de Vida:</strong> {object?.hit_points || "N/A"}
               </li>
               <li>
-                <strong>Idiomas:</strong> {enemy.languages}
+                <strong>Idiomas:</strong> {object?.languages || "N/A"}
               </li>
+
               <li>
-                <strong>Habilidades Especiais:</strong>{" "}
-                {enemy.special_abilities}
-              </li>
-              <li>
-                <strong>Conjurador:</strong> {enemy.spellcasting}
-              </li>
-              <li>
-                <strong>Velocidade:</strong> {enemy.speed}
-              </li>
-              <li>
-                <strong>XP:</strong> {enemy.xp}
+                <strong>XP:</strong> {object?.xp || "N/A"}
               </li>
             </ul>
           </Div>
