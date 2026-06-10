@@ -13,7 +13,6 @@ div {
     width: 100%;
     height: 100%;
     max-height: 40rem;
-
   }
 
   & div.cabecalho {
@@ -29,13 +28,12 @@ div {
     height: var(--card-height);
     z-index: 2;
     position: relative;
-    margin: .8rem;
+    margin: 0.8rem;
 
     &:hover div.titulo {
       animation: balanco 0.5s ease-in-out;
     }
   }
-
 
   & div.cartao-interno {
     width: 100%;
@@ -43,8 +41,6 @@ div {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
-
-
 
     &:hover {
       transform: scale(1.03);
@@ -57,7 +53,6 @@ div {
     &.virado:hover {
       transform: rotateY(180deg) scale(1.03);
     }
-
   }
 
   & div.cartao-frente,
@@ -76,15 +71,15 @@ div {
     border: var(--border-width) solid var(--ink);
     border-radius: var(--sketch-radius-1);
     box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
-    background-image: repeating-linear-gradient(30deg,
-        transparent,
-        transparent 2.8rem,
-        rgba(0, 0, 0, 0.06) 2.8rem,
-        rgba(0, 0, 0, 0.06) 3rem);
+    background-image: repeating-linear-gradient(
+      30deg,
+      transparent,
+      transparent 2.8rem,
+      rgba(0, 0, 0, 0.06) 2.8rem,
+      rgba(0, 0, 0, 0.06) 3rem
+    );
     background-position: 0 1.6rem;
-
   }
-
 
   & div.cartao-frente {
     background-color: var(--paper-front);
@@ -143,7 +138,6 @@ div {
 }
 
 @keyframes balanco {
-
   0%,
   100% {
     transform: rotate(-3deg);
@@ -161,7 +155,6 @@ div {
     transform: rotate(1deg);
   }
 }
-
 
 div.pilha-polaroid {
   z-index: 300;
@@ -234,5 +227,162 @@ div.pilha-polaroid {
         height: 100%;
       }
     }
+  }
+}
+
+div.perfil-card {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2.4rem;
+  background-color: var(--paper-front);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  background-image: repeating-linear-gradient(
+    30deg,
+    transparent,
+    transparent 2.8rem,
+    rgba(0, 0, 0, 0.06) 2.8rem,
+    rgba(0, 0, 0, 0.06) 3rem
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.perfil-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+  margin: 2.4rem 0;
+}
+
+div.avatar-circular {
+  width: 14rem;
+  height: 14rem;
+  border-radius: 50%;
+  border: var(--border-width) solid var(--ink);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  overflow: hidden;
+  flex-shrink: 0;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+div.item-orbital {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 10rem;
+  min-height: 8rem;
+  padding: 1.2rem;
+  background-color: var(--paper-back);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-2);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+
+  & span.label-orbital {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--input-placeholder);
+  }
+}
+
+div.perfil-badge-lista {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 2.4rem;
+}
+
+div.badge {
+  padding: 0.6rem 1.6rem;
+  background-color: var(--paper-back);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-2);
+  box-shadow: 0.3rem 0.3rem 0 var(--ink);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  transform: rotate(-1deg);
+
+  &:nth-child(even) {
+    transform: rotate(1deg);
+    border-radius: var(--sketch-radius-1);
+  }
+}
+
+div.quote-bo {
+  background-color: var(--paper-white);
+  border: var(--border-width) solid var(--ink);
+  border-left: 0.6rem solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  padding: 1.6rem 2.4rem;
+  margin-bottom: 2.4rem;
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+div.historico-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem 2.4rem;
+  background-color: var(--paper-front);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  margin-bottom: 1.2rem;
+  gap: 1.6rem;
+
+  & h3 {
+    margin: 0 0 0.4rem 0;
+    font-size: 1.6rem;
+  }
+
+  & p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--input-placeholder);
+  }
+}
+
+div.status-tag {
+  padding: 0.4rem 1.2rem;
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-btn);
+  box-shadow: 0.2rem 0.2rem 0 var(--ink);
+  font-size: 1.2rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ink);
+  background-color: var(--paper-back);
+
+  &.em-andamento {
+    background-color: var(--switch-bg);
+  }
+
+  &.concluida {
+    background-color: var(--secondary-btn);
   }
 }
