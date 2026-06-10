@@ -26,16 +26,7 @@ export const UsersPage = () => {
           </Div>
         </Div>
 
-        <Div
-          className="cartao-frente"
-          style={{
-            width: "100%",
-            maxWidth: "60rem",
-            margin: "0 auto",
-            height: "auto",
-            position: "static",
-          }}
-        >
+        <Div className="perfil-card">
           <Div className="perfil-header">
             <Div className="item-orbital">
               Beholder

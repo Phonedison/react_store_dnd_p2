@@ -230,6 +230,27 @@ div.pilha-polaroid {
   }
 }
 
+div.perfil-card {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2.4rem;
+  background-color: var(--paper-front);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  background-image: repeating-linear-gradient(
+    30deg,
+    transparent,
+    transparent 2.8rem,
+    rgba(0, 0, 0, 0.06) 2.8rem,
+    rgba(0, 0, 0, 0.06) 3rem
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 div.perfil-header {
   display: flex;
   flex-direction: row;
