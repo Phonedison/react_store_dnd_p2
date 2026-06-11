@@ -1,19 +1,42 @@
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Button } from "../../components/Button";
 import { Div } from "../../components/Div";
+import { CardHistorico } from "../../features/Historico/CardHistorico";
+import { OrbitalSeletor } from "../../features/Perfil/OrbitalSeletor";
+import { useElementList } from "../../hooks";
+import aventuras from "../../assets/data/aventuras.json";
 
 export const UsersPage = () => {
   const navigate = useNavigate();
 
-  const handleVoltar = () => {
-    navigate("/login");
-  };
+  // Estado do monstro selecionado no orbital esquerdo
+  // Começa null — sem seleção, mostra placeholder
+  const [monstroSelecionado, setMonstroSelecionado] = useState(null);
+
+  // Estado do item/arma selecionado no orbital direito
+  const [itemSelecionado, setItemSelecionado] = useState(null);
+
+  // Busca a lista de monstros da API — mesmo hook que a MonstersPage usa
+  const { dados: monstros, loading: loadingMonstros } = useElementList({
+    element: "monsters",
+    lang: "pt-BR",
+  });
+
+  // Busca a lista de equipamentos da API
+  const { dados: equipamentos, loading: loadingEquipamentos } = useElementList({
+    element: "equipment",
+    lang: "pt-BR",
+  });
+
+  const handleVoltar = () => navigate("/login");
 
   return (
     <>
       <title>D&D - Perfil</title>
 
       <Div className="perfil-container">
+
         <Div className="perfil-cabecalho">
           <Div className="titulo-cabecalho">
             <Button className="button return" onClick={handleVoltar}>
@@ -22,37 +45,41 @@ export const UsersPage = () => {
             <Div className="titulo">
               <h1>Perfil do Aventureiro</h1>
             </Div>
-            <Button className="button return" onClick={handleVoltar}>
+            <Button className="button navigation">
               Editar perfil
             </Button>
           </Div>
         </Div>
+
         <Div className="perfil-card">
+
           <Div className="perfil-header">
-            <Div className="item-orbital-container">
-              <Div className="item-orbital">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrwW0w7sw8RZdzaYBPd2OgoBwSb1f6IovTww&s"
-                  alt="Avatar do jogador"
-                />
-              </Div>
-              <p>Monstro de estimação</p>
-            </Div>
+
+            {/* Orbital esquerdo — monstros */}
+            <OrbitalSeletor
+              itemSelecionado={monstroSelecionado}
+              label="Monstro de estimação"
+              listaItens={monstros}
+              aoSelecionar={setMonstroSelecionado}
+              loading={loadingMonstros}
+            />
+
             <Div className="avatar-circular">
               <img
                 src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=300&auto=format&fit=crop"
                 alt="Avatar do jogador"
               />
             </Div>
-            <Div className="item-orbital-container">
-              <Div className="item-orbital">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrwW0w7sw8RZdzaYBPd2OgoBwSb1f6IovTww&s"
-                  alt="Avatar do jogador"
-                />
-              </Div>
-              <p>Arma favorita</p>
-            </Div>
+
+            {/* Orbital direito — equipamentos */}
+            <OrbitalSeletor
+              itemSelecionado={itemSelecionado}
+              label="Arma favorita"
+              listaItens={equipamentos}
+              aoSelecionar={setItemSelecionado}
+              loading={loadingEquipamentos}
+            />
+
           </Div>
 
           <Div className="titulo">
@@ -74,31 +101,22 @@ export const UsersPage = () => {
             <h3>Últimas Aventuras</h3>
           </Div>
 
+          {/*
+            O map percorre o array aventuras.json e para cada objeto
+            cria um CardHistorico passando os dados como props.
+            O key={aventura.id} é obrigatório para o React identificar cada item.
+          */}
           <Div className="historico">
-            <Div className="historico-card">
-              <Div>
-                <h3>A Maldição de Strahd</h3>
-                <p>Personagem: Arthur, Paladino da Devoção</p>
-              </Div>
-              <Div className="status-tag em-andamento">Em Andamento</Div>
-            </Div>
-
-            <Div className="historico-card">
-              <Div>
-                <h3>A Mina Perdida de Phandelver</h3>
-                <p>Personagem: Thorian, o Bárbaro</p>
-              </Div>
-              <Div className="status-tag concluida">Concluída</Div>
-            </Div>
-
-            <Div className="historico-card">
-              <Div>
-                <h3>A Mina Perdida de Phandelver</h3>
-                <p>Personagem: Thorian, o Bárbaro</p>
-              </Div>
-              <Div className="status-tag concluida">Concluída</Div>
-            </Div>
+            {aventuras.map((aventura) => (
+              <CardHistorico
+                key={aventura.id}
+                titulo={aventura.titulo}
+                personagem={aventura.personagem}
+                status={aventura.status}
+              />
+            ))}
           </Div>
+
         </Div>
       </Div>
     </>
