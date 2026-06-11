@@ -14,9 +14,9 @@ export const Home = () => {
 
           <Div className="titulo">SEJA BEM VINDO</Div>
 
-          <Div className="em-linha">
+          
 
-            <Div className="cartao" onClick={() => navigate('/monsters')}>
+        <Div className="cartao" onClick={() => navigate('/monsters')}>
               <Div className="cartao-interno">
                 <Div className="cartao-frente">
                   <Div className="titulo">👹</Div>
@@ -34,11 +34,7 @@ export const Home = () => {
               </Div>
             </Div>
 
-          </Div>
-
-          <Div className="em-linha">
-
-            <Div className="cartao" onClick={() => navigate('/ficha')}>
+         <Div className="cartao" onClick={() => navigate('/ficha')}>
               <Div className="cartao-interno">
                 <Div className="cartao-frente">
                   <Div className="titulo">📜</Div>
@@ -56,7 +52,7 @@ export const Home = () => {
               </Div>
             </Div>
 
-          </Div>
+          
 
           <Div className="container-botoes">
             <Button
