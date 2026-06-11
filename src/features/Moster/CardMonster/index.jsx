@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Div } from "../../../components/Div";
 import { ImagePolaroid } from "../../../components/Img";
-import { useElementListImage } from "../../../services/CustomHooks";
+import { useElementListImage } from "../../../hooks";
 
 const imagem_padrao =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTErdgbxMUdTJs1QVlGKym_uTNRaF_OQEk3XA&s";
