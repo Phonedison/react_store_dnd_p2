@@ -24,8 +24,8 @@ export const UsersPage = () => {
   });
 
   // Busca a lista de equipamentos da API
-  const { dados: equipamentos, loading: loadingEquipamentos } = useElementList({
-    element: "equipment",
+  const { dados: itensMagicos, loading: loadingEquipamentos } = useElementList({
+    element: "magic-items",
     lang: "pt-BR",
   });
 
@@ -74,8 +74,8 @@ export const UsersPage = () => {
             {/* Orbital direito — equipamentos */}
             <OrbitalSeletor
               itemSelecionado={itemSelecionado}
-              label="Arma favorita"
-              listaItens={equipamentos}
+              label="Item mágico favorito"
+              listaItens={itensMagicos}
               aoSelecionar={setItemSelecionado}
               loading={loadingEquipamentos}
             />

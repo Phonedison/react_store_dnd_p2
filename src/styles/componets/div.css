@@ -270,14 +270,13 @@ div.perfil-card {
 div.perfil-header {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-evenly;
   width: 100%;
 }
 
 div.avatar-circular {
-  width: 25rem;
-  height: 25rem;
+  width: 26rem;
+  height: 26rem;
   border-radius: 50%;
   border: var(--border-width) solid var(--ink);
   box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
@@ -293,8 +292,8 @@ div.avatar-circular {
 }
 
 div.item-orbital {
-  width: 12rem;
-  height: 12rem;
+  width: 14rem;
+  height: 14rem;
   border-radius: 50%;
   border: var(--border-width) solid var(--ink);
   box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
@@ -310,6 +309,7 @@ div.item-orbital {
 }
 
 div.item-orbital-container {
+  max-width: 12rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -321,11 +321,12 @@ div.item-orbital-container {
     font-size: 1.6rem;
     font-weight: bold;
     font-family: var(--germania);
+    text-align: center;
   }
 
   & div.item-orbital {
-    overflow: hidden;    
-  }  
+    overflow: hidden;
+  }
 }
 
 /* Lista de seleção que abre ao clicar no orbital */
