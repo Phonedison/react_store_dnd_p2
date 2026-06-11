@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
-import { getElements } from "../dndAPI";
+import { getElements } from "../services/dndAPI";
 
 /**
  * Hook personalizado para facilitar a busca de elementos na API dnd5eAPI.
