@@ -79,7 +79,7 @@ export const MonstersPage = () => {
             <h2>Loading...</h2>
           </Div>
         ) : (
-          <Div className="borda-rabisco em-linha">
+          <Div className="em-linha">
             {monstrosDaPagina.map((inimigo) => (
               <CardEnemy key={inimigo.id} enemy={inimigo} />
             ))}
