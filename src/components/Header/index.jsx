@@ -1,13 +1,25 @@
 import { useNavigate } from "react-router";
+import { useType } from "../../contexts";
 import { Button } from "../Button";
 import { Div } from "../Div";
 
 export const Navbar = ({ title = null, typePerfil = null }) => {
   const navigate = useNavigate();
+  const { login, sair } = useType();
 
   const handleVoltar = () => {
+    sair();
     navigate("/login");
   };
+
+  if (!login) {
+    return (
+      <div>
+        <p>Você não está logado.</p>
+        <button onClick={() => navigate("/")}>Ir para Login</button>
+      </div>
+    );
+  }
 
   const handlePerfil = () => {
     navigate("/usersPage");
