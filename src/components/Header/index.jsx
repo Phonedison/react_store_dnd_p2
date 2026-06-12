@@ -1,23 +1,67 @@
-export const Navbar = () => {
+import { useNavigate } from "react-router";
+import { Button } from "../Button";
+import { Div } from "../Div";
+
+export const Navbar = ({ title = null, typePerfil = null }) => {
+  const navigate = useNavigate();
+
+  const handleVoltar = () => {
+    navigate("/login");
+  };
+
+  const handlePerfil = () => {
+    navigate("/usersPage");
+  };
+
+  const handleMonster = () => {
+    navigate("/monsters");
+  };
+
+  const handleMesa = () => {
+    navigate("/mesa");
+  };
+
   return (
     <nav className="navbar">
-      <div className="navbar-container">
-        <div className="titulo-cabecalho">
-          <div className="titulo">MINHA FICHA .COM</div>
-        </div>
+      <Div className="navbar-container">
+        <Div className="titulo-cabecalho">
+          <Div className="titulo" onClick={handleVoltar}>
+            D&D_Wiki
+          </Div>
+        </Div>
 
-        <div className="container-botoes">
-          <button className="button navigation">INÍCIO</button>
-          <button className="button navigation">PERFIL</button>
-          <button className="button navigation" disabled>
-            BÔNUS
-          </button>
-        </div>
+        {title && (
+          <Div className="container-title-page">
+            <h4>{title}</h4>
+          </Div>
+        )}
 
-        <div className="container-botoes">
-          <button className="button cancel">SAIR</button>
-        </div>
-      </div>
+        {typePerfil === "jogador" && (
+          <Div className="container-botoes">
+            <Button className="button navigation" onClick={handlePerfil}>
+              Perfil
+            </Button>
+          </Div>
+        )}
+
+        {typePerfil === "mestre" && (
+          <Div className="container-botoes">
+            <Button className="button navigation" onClick={handleMonster}>
+              Monstros
+            </Button>
+
+            <Button className="button navigation" onClick={handleMesa}>
+              Mesas
+            </Button>
+          </Div>
+        )}
+
+        <Div className="container-botoes">
+          <Button className="button cancel" onClick={handleVoltar}>
+            SAIR
+          </Button>
+        </Div>
+      </Div>
     </nav>
   );
 };
