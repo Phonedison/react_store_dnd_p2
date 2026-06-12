@@ -20,7 +20,13 @@ export const Login = () => {
     { login: "jogador", password: "1234", typePerfil: "jogador" },
   ];
 
-  const handleClick = (e) => {
+  const handleClearForm = () => {
+    setUser("");
+    setPassword("");
+    setMensagem(null);
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     setMensagem(null);
 
@@ -28,21 +34,30 @@ export const Login = () => {
     const validarPassword = password.trim();
 
     if (!validarUsuario || !validarPassword) {
-      setMensagem("Por favor, preencha todos os campos!");
+      const msgAviso = "Por favor, preencha todos os campos!";
+      setMensagem(msgAviso);
+      alert(msgAviso);
       return;
     }
 
-    const isValid = usuarios.find(
-      (usuario) => (usuario.login === user) & (usuario.password === password),
+    const usuarioValido = usuarios.find(
+      (usuario) =>
+        usuario.login === validarUsuario &&
+        usuario.password === validarPassword,
     );
 
-    if (isValid) {
-      setLogin(isValid.typePerfil);
-      navigate("/monsters");
+    if (usuarioValido) {
+      setLogin(usuarioValido.typePerfil);
+      handleClearForm();
+      console.log(usuarioValido);
+      navigate("/monsters", {
+        state: { typePerfil: usuarioValido.typePerfil },
+      });
     } else {
-      setMensagem("Usuário ou senha incorrétos!");
+      const msgErro = "Usuário ou senha incorretos!";
+      setMensagem(msgErro);
+      alert(msgErro);
     }
-    alert(mensagem);
   };
 
   return (
@@ -56,14 +71,15 @@ export const Login = () => {
               <Div className="cartao-frente">
                 <Div className="titulo">Seja Bem vindo!</Div>
 
-                <Form className="container">
+                <Form className="container" onSubmit={handleSubmit}>
                   <Div className="container-input">
                     <Input
                       name="text"
                       placeholder="login"
                       type="text"
+                      value={user}
                       required
-                      onChange={(inputUser) => setUser(inputUser.target.value)}
+                      onChange={(e) => setUser(e.target.value)}
                     />
                   </Div>
 
@@ -72,22 +88,26 @@ export const Login = () => {
                       name="password"
                       placeholder="Password"
                       type="password"
+                      value={password}
                       required
-                      onChange={(inputPassword) =>
-                        setPassword(inputPassword.target.value)
-                      }
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </Div>
 
                   <Div className="container-botoes">
-                    <Button className="button confirm" onClick={handleClick}>
+                    <Button className="button confirm" type="submit">
                       Confirmar
                     </Button>
-                    <Button className="button cancel" type="button">
+                    <Button
+                      className="button cancel"
+                      type="button"
+                      onClick={handleClearForm}
+                    >
                       Cancelar
                     </Button>
                   </Div>
                 </Form>
+                {mensagem && <Div className="erro-mensagem">{mensagem}</Div>}
               </Div>
             </Div>
           </Div>
