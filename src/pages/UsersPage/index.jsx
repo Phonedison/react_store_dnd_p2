@@ -3,6 +3,10 @@ import { useNavigate } from "react-router";
 import { Button } from "../../components/Button";
 import { Div } from "../../components/Div";
 import { Navbar } from "../../components/Header";
+import { useElementList } from "../../hooks";
+import { OrbitalSeletor } from "../../features/Perfil/OrbitalSeletor";
+import { CardHistorico } from "../../features/Historico/CardHistorico";
+import aventuras from "../../assets/data/aventuras.json";
 
 export const UsersPage = () => {
   const navigate = useNavigate();
@@ -47,7 +51,6 @@ export const UsersPage = () => {
             </Button>
           </Div>
           <Div className="perfil-header">
-
             {/* Orbital esquerdo — monstros */}
             <OrbitalSeletor
               itemSelecionado={monstroSelecionado}
@@ -72,7 +75,6 @@ export const UsersPage = () => {
               aoSelecionar={setItemSelecionado}
               loading={loadingEquipamentos}
             />
-
           </Div>
 
           <Div className="titulo">
@@ -109,7 +111,6 @@ export const UsersPage = () => {
               />
             ))}
           </Div>
-
         </Div>
       </Div>
     </>
