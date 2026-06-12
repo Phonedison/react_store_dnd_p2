@@ -8,10 +8,10 @@
 @import url("./abstracts/variaveis.css");
 
 /* Estilização dos components */
-@import url("./componets/button.css");
-@import url("./componets/input.css");
-@import url("./componets/div.css");
-@import url("./componets/form.css");
-@import url("./componets/select.css");
-@import url("./componets/title.css");
-@import url("./componets/navbar.css");
+@import url("./components/button.css");
+@import url("./components/input.css");
+@import url("./components/div.css");
+@import url("./components/form.css");
+@import url("./components/select.css");
+@import url("./components/title.css");
+@import url("./components/navbar.css");
