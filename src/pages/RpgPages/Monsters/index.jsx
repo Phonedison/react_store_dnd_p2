@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Button } from "../../../components/Button";
 import { Div } from "../../../components/Div";
+import { Navbar } from "../../../components/Header";
 import { CardEnemy } from "../../../features/Moster/CardMonster";
 import { useElementList } from "../../../hooks";
 import { JSONExport } from "../../../services/JsonExport";
@@ -29,6 +30,7 @@ export const MonstersPage = () => {
 
   return (
     <>
+      <Navbar />
       <Div className="container">
         <Div className="cabecalho">
           <Div className="titulo-cabecalho">

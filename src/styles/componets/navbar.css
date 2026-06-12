@@ -11,7 +11,7 @@
   z-index: 999;
 
 
-  & .container {
+  & .navbar-container {
     padding: .8rem 2.4rem;
 
     width: 100%;

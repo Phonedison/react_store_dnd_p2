@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { Button } from "../../components/Button";
 import { Div } from "../../components/Div";
+import { Navbar } from "../../components/Header";
 
 export const UsersPage = () => {
   const navigate = useNavigate();
@@ -12,22 +13,21 @@ export const UsersPage = () => {
   return (
     <>
       <title>D&D - Perfil</title>
-
+      <Navbar />
       <Div className="perfil-container">
-        <Div className="perfil-cabecalho">
+        <Div className="perfil-cabecalho"></Div>
+        <Div className="perfil-card">
           <Div className="titulo-cabecalho">
             <Button className="button return" onClick={handleVoltar}>
               Voltar
             </Button>
-            <Div className="titulo">
+            {/* <Div className="titulo">
               <h1>Perfil do Aventureiro</h1>
-            </Div>
+            </Div> */}
             <Button className="button return" onClick={handleVoltar}>
               Editar perfil
             </Button>
           </Div>
-        </Div>
-        <Div className="perfil-card">
           <Div className="perfil-header">
             <Div className="item-orbital-container">
               <Div className="item-orbital">
