@@ -6,4 +6,6 @@
  * // Exemplo de uso:
  * <Input type="password" placeholder="Digite sua senha" />
  */
-export const Input = ({ ...props }) => <input {...props} />;
+export const Input = ({ value, onChange, ...props }) => (
+  <input value={value} {...props} onChange={onChange} />
+);
