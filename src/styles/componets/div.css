@@ -410,6 +410,16 @@ div.status-tag {
   }
 }
 
+div.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  width: 100%;
+  min-height: 100vh;
+}
+
+
 div.titulo-home{
   font-size: 3.2rem;
     font-weight: 900;
@@ -418,7 +428,9 @@ div.titulo-home{
 
     text-transform: uppercase;
     letter-spacing: 0.1rem;
+   
     text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
 }
+
 
 
