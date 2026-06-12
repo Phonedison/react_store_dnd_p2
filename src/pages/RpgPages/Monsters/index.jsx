@@ -31,6 +31,7 @@ export const MonstersPage = () => {
   return (
     <>
       <Navbar title={"Monstros do D&D"} />
+      <title>D&D_Wiki - Monstros</title>
       <Div className="container">
         <Div className="cabecalho">
           <Div className="titulo-cabecalho">
