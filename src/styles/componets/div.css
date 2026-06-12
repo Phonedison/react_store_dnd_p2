@@ -125,6 +125,12 @@ div {
     display: flex;
     gap: 1.6rem;
     flex-direction: row;
+    align-items: center;
+
+    & span {
+      font-family: var(--lato);
+      font-size: 2rem;
+    }
   }
 
   & div.em-linha {
