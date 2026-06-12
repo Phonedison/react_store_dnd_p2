@@ -40,10 +40,6 @@ export const MonstersPage = () => {
               </Button>
             )}
 
-            <Div className="titulo">
-              <h1>Monstros D&D 5e</h1>
-            </Div>
-
             {!loading && (
               <Div className="container-botoes">
                 <Button
