@@ -1,15 +1,48 @@
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Button } from "../../../components/Button";
 import { Div } from "../../../components/Div";
 import { Form } from "../../../components/Form";
 import { Input } from "../../../components/Input";
+import { useType } from "../../../contexts";
 
 export const Login = () => {
   const navigate = useNavigate();
+  const { setLogin } = useType();
+
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+  const [mensagem, setMensagem] = useState(null);
+
+  // passando usuários para teste
+  const usuarios = [
+    { login: "mestre", password: "1234", typePerfil: "mestre" },
+    { login: "jogador", password: "1234", typePerfil: "jogador" },
+  ];
 
   const handleClick = (e) => {
     e.preventDefault();
-    navigate("/monsters");
+    setMensagem(null);
+
+    const validarUsuario = user.trim();
+    const validarPassword = password.trim();
+
+    if (!validarUsuario || !validarPassword) {
+      setMensagem("Por favor, preencha todos os campos!");
+      return;
+    }
+
+    const isValid = usuarios.find(
+      (usuario) => (usuario.login === user) & (usuario.password === password),
+    );
+
+    if (isValid) {
+      setLogin(isValid.typePerfil);
+      navigate("/monsters");
+    } else {
+      setMensagem("Usuário ou senha incorrétos!");
+    }
+    alert(mensagem);
   };
 
   return (
@@ -26,10 +59,11 @@ export const Login = () => {
                 <Form className="container">
                   <Div className="container-input">
                     <Input
-                      name="email"
-                      placeholder="Email"
-                      type="email"
+                      name="text"
+                      placeholder="login"
+                      type="text"
                       required
+                      onChange={(inputUser) => setUser(inputUser.target.value)}
                     />
                   </Div>
 
@@ -39,6 +73,9 @@ export const Login = () => {
                       placeholder="Password"
                       type="password"
                       required
+                      onChange={(inputPassword) =>
+                        setPassword(inputPassword.target.value)
+                      }
                     />
                   </Div>
 
