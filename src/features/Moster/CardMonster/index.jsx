@@ -29,12 +29,12 @@ export const CardEnemy = ({ enemy }) => {
       <Div className={`cartao-interno ${verso ? "virado" : ""}`}>
         <Div className="cartao-frente">
           <Div className="titulo">
-            <h4 className="title-monster-card">{enemy.name}</h4>
+            <h4 className="title-monster-card">{object?.name}</h4>
           </Div>
 
           <ImagePolaroid
             src={imgSrc || urlImages}
-            alt={`imagem representativa de ${enemy.name}`}
+            alt={`imagem representativa de ${object?.name}`}
             onError={() => {
               if (!imgSrc) setImgSrc(imagem_padrao);
             }}
@@ -42,35 +42,24 @@ export const CardEnemy = ({ enemy }) => {
         </Div>
         <Div className="cartao-verso">
           <Div className="titulo">
-            <h4 className="title-monster-card">{enemy.name}</h4>
+            <h4 className="title-monster-card">{object?.name}</h4>
           </Div>
 
           <Div>
             <ul style={{ textAlign: "left", listStylePosition: "inside" }}>
               <li>
-                <strong>Alinhamento:</strong> {enemy.alignment}
+                <strong>Alinhamento:</strong> {object?.alignment}
               </li>
               <li>
-                <strong>Classe de Armadura:</strong> {enemy.armor_class}
+                <strong>Classe de Armadura:</strong>{" "}
+                {object?.armor_class?.[0]?.value || "N/A"}
               </li>
               <li>
-                <strong>Pontos de Vida:</strong> {enemy.hit_points}
+                <strong>Pontos de Vida:</strong> {object?.hit_points}
               </li>
+
               <li>
-                <strong>Idiomas:</strong> {enemy.languages}
-              </li>
-              <li>
-                <strong>Habilidades Especiais:</strong>{" "}
-                {enemy.special_abilities}
-              </li>
-              <li>
-                <strong>Conjurador:</strong> {enemy.spellcasting}
-              </li>
-              <li>
-                <strong>Velocidade:</strong> {enemy.speed}
-              </li>
-              <li>
-                <strong>XP:</strong> {enemy.xp}
+                <strong>XP:</strong> {object?.xp}
               </li>
             </ul>
           </Div>
