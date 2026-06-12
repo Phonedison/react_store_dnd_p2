@@ -412,3 +412,16 @@ div.status-tag {
     background-color: var(--secondary-btn);
   }
 }
+
+div.titulo-home{
+  font-size: 3.2rem;
+    font-weight: 900;
+    color: var(--ink);
+    text-align: center;
+
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+}
+
+
