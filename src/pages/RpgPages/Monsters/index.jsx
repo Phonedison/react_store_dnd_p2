@@ -30,7 +30,7 @@ export const MonstersPage = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar title={"Monstros do D&D"} />
       <Div className="container">
         <Div className="cabecalho">
           <Div className="titulo-cabecalho">
