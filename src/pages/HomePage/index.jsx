@@ -18,7 +18,7 @@ export const Home = () => {
               <h1>ESCOLHA SEU CAMINHO</h1>
             </Div>
            </Div>
-            <Button className = "button navigation" onClick={() => navigate('/login')}>SAIR</Button>
+            <Button className = "button cancel" onClick={() => navigate('/login')}>SAIR</Button>
         </Div>
 
 
