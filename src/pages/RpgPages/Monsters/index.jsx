@@ -3,12 +3,14 @@ import { useNavigate } from "react-router";
 import { Button } from "../../../components/Button";
 import { Div } from "../../../components/Div";
 import { Navbar } from "../../../components/Header";
+import { useType } from "../../../contexts";
 import { CardEnemy } from "../../../features/Moster/CardMonster";
 import { useElementList } from "../../../hooks";
 import { JSONExport } from "../../../services/JsonExport";
 
 export const MonstersPage = () => {
   const navigate = useNavigate();
+  const { login } = useType();
 
   const [paginaAtual, setPaginaAtual] = useState(1);
   const itensPorPagina = 10;
@@ -30,7 +32,8 @@ export const MonstersPage = () => {
 
   return (
     <>
-      <Navbar title={"Monstros do D&D"} />
+      <Navbar title={"Monstros do D&D"} typePerfil={login} />
+      <title>D&D_Wiki - Monstros</title>
       <Div className="container">
         <Div className="cabecalho">
           <Div className="titulo-cabecalho">
