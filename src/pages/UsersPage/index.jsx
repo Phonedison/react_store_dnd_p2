@@ -2,10 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Button } from "../../components/Button";
 import { Div } from "../../components/Div";
-import { CardHistorico } from "../../features/Historico/CardHistorico";
-import { OrbitalSeletor } from "../../features/Perfil/OrbitalSeletor";
-import { useElementList } from "../../hooks";
-import aventuras from "../../assets/data/aventuras.json";
+import { Navbar } from "../../components/Header";
 
 export const UsersPage = () => {
   const navigate = useNavigate();
@@ -34,25 +31,21 @@ export const UsersPage = () => {
   return (
     <>
       <title>D&D - Perfil</title>
-
+      <Navbar title={"Perfil do Aventureiro"} />
       <Div className="perfil-container">
-
-        <Div className="perfil-cabecalho">
+        <Div className="perfil-cabecalho"></Div>
+        <Div className="perfil-card">
           <Div className="titulo-cabecalho">
-            <Button className="button return" onClick={handleVoltar}>
+            {/* <Button className="button return" onClick={handleVoltar}>
               Voltar
-            </Button>
-            <Div className="titulo">
+            </Button> */}
+            {/* <Div className="titulo">
               <h1>Perfil do Aventureiro</h1>
-            </Div>
-            <Button className="button navigation">
+            </Div> */}
+            <Button className="button edit" onClick={handleVoltar}>
               Editar perfil
             </Button>
           </Div>
-        </Div>
-
-        <Div className="perfil-card">
-
           <Div className="perfil-header">
 
             {/* Orbital esquerdo — monstros */}

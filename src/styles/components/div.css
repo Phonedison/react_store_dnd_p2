@@ -12,12 +12,13 @@ div {
   & div.container {
     width: 100%;
     height: 100%;
-    max-height: 40rem;
+    max-height: 60rem;
   }
 
   & div.cabecalho {
     display: flex;
     margin: 2.4rem;
+    margin-top: 9.2rem;
     gap: 1.6rem;
     z-index: 5;
   }
@@ -71,13 +72,11 @@ div {
     border: var(--border-width) solid var(--ink);
     border-radius: var(--sketch-radius-1);
     box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
-    background-image: repeating-linear-gradient(
-      30deg,
-      transparent,
-      transparent 2.8rem,
-      rgba(0, 0, 0, 0.06) 2.8rem,
-      rgba(0, 0, 0, 0.06) 3rem
-    );
+    background-image: repeating-linear-gradient(30deg,
+        transparent,
+        transparent 2.8rem,
+        rgba(0, 0, 0, 0.06) 2.8rem,
+        rgba(0, 0, 0, 0.06) 3rem);
     background-position: 0 1.6rem;
   }
 
@@ -126,6 +125,12 @@ div {
     display: flex;
     gap: 1.6rem;
     flex-direction: row;
+    align-items: center;
+
+    & span {
+      font-family: var(--lato);
+      font-size: 2rem;
+    }
   }
 
   & div.em-linha {
@@ -138,6 +143,7 @@ div {
 }
 
 @keyframes balanco {
+
   0%,
   100% {
     transform: rotate(-3deg);
@@ -235,6 +241,8 @@ div.perfil-container {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  /* para evitar ficar abaixo do navbar */
+  margin-top: 9.2rem;
 }
 
 div.perfil-cabecalho {
@@ -254,13 +262,11 @@ div.perfil-card {
   border: var(--border-width) solid var(--ink);
   border-radius: var(--sketch-radius-1);
   box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
-  background-image: repeating-linear-gradient(
-    30deg,
-    transparent,
-    transparent 2.8rem,
-    rgba(0, 0, 0, 0.06) 2.8rem,
-    rgba(0, 0, 0, 0.06) 3rem
-  );
+  background-image: repeating-linear-gradient(30deg,
+      transparent,
+      transparent 2.8rem,
+      rgba(0, 0, 0, 0.06) 2.8rem,
+      rgba(0, 0, 0, 0.06) 3rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -314,8 +320,6 @@ div.item-orbital-container {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  cursor: pointer;
-  position: relative;
 
   & p {
     font-size: 1.6rem;

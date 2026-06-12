@@ -12,11 +12,6 @@ export const Login = () => {
     navigate("/monsters");
   };
 
-  const handleVerPerfil = (e) => {
-    e.preventDefault();
-    navigate("/usersPage");
-  };
-
   return (
     <>
       <title>D&D - Login</title>
@@ -55,13 +50,6 @@ export const Login = () => {
                       Cancelar
                     </Button>
                   </Div>
-                  <Button
-                    className="button navigation"
-                    type="button"
-                    onClick={handleVerPerfil}
-                  >
-                    Ver Perfil
-                  </Button>
                 </Form>
               </Div>
             </Div>
