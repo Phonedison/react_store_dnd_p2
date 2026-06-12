@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Button } from "../../../components/Button";
 import { Div } from "../../../components/Div";
+import { Navbar } from "../../../components/Header";
 import { CardEnemy } from "../../../features/Moster/CardMonster";
 import { useElementList } from "../../../hooks";
 import { JSONExport } from "../../../services/JsonExport";
@@ -29,6 +30,7 @@ export const MonstersPage = () => {
 
   return (
     <>
+      <Navbar title={"Monstros do D&D"} />
       <Div className="container">
         <Div className="cabecalho">
           <Div className="titulo-cabecalho">
@@ -37,10 +39,6 @@ export const MonstersPage = () => {
                 Voltar
               </Button>
             )}
-
-            <Div className="titulo">
-              <h1>Monstros D&D 5e</h1>
-            </Div>
 
             {!loading && (
               <Div className="container-botoes">
