@@ -13,18 +13,18 @@ export const UsersPage = () => {
   return (
     <>
       <title>D&D - Perfil</title>
-      <Navbar />
+      <Navbar title={"Perfil do Aventureiro"} />
       <Div className="perfil-container">
         <Div className="perfil-cabecalho"></Div>
         <Div className="perfil-card">
           <Div className="titulo-cabecalho">
-            <Button className="button return" onClick={handleVoltar}>
+            {/* <Button className="button return" onClick={handleVoltar}>
               Voltar
-            </Button>
+            </Button> */}
             {/* <Div className="titulo">
               <h1>Perfil do Aventureiro</h1>
             </Div> */}
-            <Button className="button return" onClick={handleVoltar}>
+            <Button className="button edit" onClick={handleVoltar}>
               Editar perfil
             </Button>
           </Div>
