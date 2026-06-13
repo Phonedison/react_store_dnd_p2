@@ -80,6 +80,15 @@ export const Home = () => {
           <Div className = "titulo-home"><h3>Crie um mundo, convide seus heróis e conte uma história épica.</h3> <h4>(Monte a sua mesa)</h4> <Button className = "button navigation" onClick={() => navigate('/mesa')}> Explorar</Button> </Div>
         </Div>
         
+        <Div className="card-home" >
+     
+          <Div className="avatar-circular">
+            <img src="https://st3.depositphotos.com/7438112/14031/v/450/depositphotos_140318540-stock-illustration-form-icon-on-white-background.jpg" 
+            alt="" />
+          </Div>
+          
+        <Div className = "titulo-home"><h3>Cada herói começa com uma história. Escreva a sua.</h3> <h4>(Crie uma ficha)</h4> <Button className = "button navigation" onClick={() => navigate('/ficha')}> Explorar</Button></Div> 
+        </Div>
 
         <Div className="card-home">
       
@@ -89,6 +98,7 @@ export const Home = () => {
           </Div>
           <Div className = "titulo-home"><h3>Você não passará!</h3><h4>(Área exclusiva para mestres)</h4> <Button className = "button navigation" onClick={() => navigate('/mestre')}>Explorar</Button> </Div>
         </Div>
+
         </Div>
         </Div>
     
