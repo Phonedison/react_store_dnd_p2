@@ -6,52 +6,72 @@ import { Navbar } from "../../components/Header";
 import { useElementList } from "../../hooks";
 import { OrbitalSeletor } from "../../features/Perfil/OrbitalSeletor";
 import { CardHistorico } from "../../features/Historico/CardHistorico";
+import { ModalEdicao } from "../../features/Perfil/ModalEdicao";
 import aventuras from "../../assets/data/aventuras.json";
 
 export const UsersPage = () => {
   const navigate = useNavigate();
 
-  // Estado do monstro selecionado no orbital esquerdo
-  // Começa null — sem seleção, mostra placeholder
+  // Orbitais
   const [monstroSelecionado, setMonstroSelecionado] = useState(null);
-
-  // Estado do item/arma selecionado no orbital direito
   const [itemSelecionado, setItemSelecionado] = useState(null);
 
-  // Busca a lista de monstros da API — mesmo hook que a MonstersPage usa
+  // Dados do perfil editável
+  const [racaSelecionada, setRacaSelecionada] = useState(null);
+  const [classeSelecionada, setClasseSelecionada] = useState(null);
+  const [nivel, setNivel] = useState(1);
+  const [nome, setNome] = useState("Arthur Pendragon");
+  const [bio, setBio] = useState(
+    "A luz do alvorecer guia minha lâmina. Não recuaremos enquanto as sombras de Barovia não forem dissipadas."
+  );
+
+  // Controle do modal de edição
+  const [modalAberto, setModalAberto] = useState(false);
+
+  // Controle do histórico
+  const [verTodos, setVerTodos] = useState(false);
+
+  // Listas da API
   const { dados: monstros, loading: loadingMonstros } = useElementList({
     element: "monsters",
     lang: "pt-BR",
   });
 
-  // Busca a lista de equipamentos da API
-  const { dados: itensMagicos, loading: loadingEquipamentos } = useElementList({
+  const { dados: itensMagicos, loading: loadingItens } = useElementList({
     element: "magic-items",
     lang: "pt-BR",
   });
 
-  const handleVoltar = () => navigate("/login");
+  const { dados: racas, loading: loadingRacas } = useElementList({
+    element: "races",
+  });
+
+  const { dados: classes, loading: loadingClasses } = useElementList({
+    element: "classes",
+  });
+
+  // Se verTodos for true mostra tudo, senão mostra só os dois primeiros
+  const aventurasVisiveis = verTodos ? aventuras : aventuras.slice(0, 2);
+
+  const abrirModal = () => setModalAberto(true);
+  const fecharModal = () => setModalAberto(false);
 
   return (
     <>
       <title>D&D_Wiki - Perfil</title>
-      <Navbar title={"Perfil do Aventureiro"} />
+      <Navbar title="Perfil do Aventureiro" />
+
       <Div className="perfil-container">
-        <Div className="perfil-cabecalho"></Div>
         <Div className="perfil-card">
-          <Div>
-            {/* <Button className="button return" onClick={handleVoltar}>
-              Voltar
-            </Button> */}
-            {/* <Div className="titulo">
-              <h1>Perfil do Aventureiro</h1>
-            </Div> */}
-            <Button className="button edit" onClick={handleVoltar}>
+
+          {/* Botão de edição no topo direito do card */}
+          <Div className="perfil-topo-direito">
+            <Button className="button edit" onClick={abrirModal}>
               Editar perfil
             </Button>
           </Div>
+
           <Div className="perfil-header">
-            {/* Orbital esquerdo — monstros */}
             <OrbitalSeletor
               itemSelecionado={monstroSelecionado}
               label="Monstro de estimação"
@@ -67,42 +87,44 @@ export const UsersPage = () => {
               />
             </Div>
 
-            {/* Orbital direito — equipamentos */}
             <OrbitalSeletor
               itemSelecionado={itemSelecionado}
               label="Item mágico favorito"
               listaItens={itensMagicos}
               aoSelecionar={setItemSelecionado}
-              loading={loadingEquipamentos}
+              loading={loadingItens}
             />
           </Div>
 
+          {/* Nome vem do estado — atualiza quando o modal salvar */}
           <Div className="titulo">
-            <h2>Arthur Pendragon</h2>
+            <h2>{nome}</h2>
           </Div>
 
           <Div className="perfil-badge-lista">
-            <Div className="badge">Raça: Humano</Div>
-            <Div className="badge">Classe: Paladino</Div>
-            <Div className="badge">Aventureiro: Nível 5</Div>
+            <Div className="badge">
+              Raça: {racaSelecionada?.name || "Não definida"}
+            </Div>
+            <Div className="badge">
+              Classe: {classeSelecionada?.name || "Não definida"}
+            </Div>
+            <Div className="badge">
+              Nível: {nivel}
+            </Div>
           </Div>
 
-          <Div className="quote-box">
-            "A luz do alvorecer guia minha lâmina. Não recuaremos enquanto as
-            sombras de Barovia não forem dissipadas."
-          </Div>
+          <Div className="quote-box">"{bio}"</Div>
 
           <Div className="titulo titulo-alternativo">
             <h3>Últimas Aventuras</h3>
           </Div>
 
-          {/*
-            O map percorre o array aventuras.json e para cada objeto
-            cria um CardHistorico passando os dados como props.
-            O key={aventura.id} é obrigatório para o React identificar cada item.
-          */}
           <Div className="historico">
-            {aventuras.map((aventura) => (
+            {/*
+              aventurasVisiveis já foi calculado acima com slice ou sem.
+              O map aqui não muda — só o array que ele percorre é diferente.
+            */}
+            {aventurasVisiveis.map((aventura) => (
               <CardHistorico
                 key={aventura.id}
                 titulo={aventura.titulo}
@@ -111,8 +133,43 @@ export const UsersPage = () => {
               />
             ))}
           </Div>
+
+          {/* Só mostra o botão se tiver mais de 2 aventuras */}
+          {aventuras.length > 2 && (
+            <Button
+              className="button navigation"
+              onClick={() => setVerTodos(!verTodos)}
+            >
+              {verTodos ? "Menos" : `todas (${aventuras.length})`}
+            </Button>
+          )}
+
         </Div>
       </Div>
+
+      {/* Modal de edição */}
+      {modalAberto && (
+        <ModalEdicao
+          nome={nome}
+          bio={bio}
+          nivel={nivel}
+          racas={racas}
+          classes={classes}
+          loadingRacas={loadingRacas}
+          loadingClasses={loadingClasses}
+          racaSelecionada={racaSelecionada}
+          classeSelecionada={classeSelecionada}
+          onSalvar={({ novoNome, novaBio, novoNivel, novaRaca, novaClasse }) => {
+            setNome(novoNome);
+            setBio(novaBio);
+            setNivel(novoNivel);
+            setRacaSelecionada(novaRaca);
+            setClasseSelecionada(novaClasse);
+            fecharModal();
+          }}
+          onFechar={fecharModal}
+        />
+      )}
     </>
   );
 };

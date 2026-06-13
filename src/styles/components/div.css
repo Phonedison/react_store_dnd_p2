@@ -494,3 +494,10 @@ div.status-tag {
     background-color: var(--secondary-btn);
   }
 }
+
+div.perfil-topo-direito {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
