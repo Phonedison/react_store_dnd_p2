@@ -50,7 +50,12 @@ export const Login = () => {
       setLogin(usuarioValido.typePerfil);
       handleClearForm();
       console.log(usuarioValido);
-      navigate("/monsters", {
+
+      let rotaDestino = "";
+      if (usuarioValido.typePerfil === "mestre") rotaDestino = "/monsters";
+      if (usuarioValido.typePerfil === "jogador") rotaDestino = "/usersPage";
+
+      navigate(rotaDestino, {
         state: { typePerfil: usuarioValido.typePerfil },
       });
     } else {

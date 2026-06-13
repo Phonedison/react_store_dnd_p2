@@ -13,9 +13,13 @@ export const router = createBrowserRouter(
     <>
       <Route path="/" element={<App />} />,
       <Route path="/login" element={<App />} />,
-      <Route element={<ProtectedRoute />}>
-        <Route path="/monsters" element={<MonstersPage />} />,
-        <Route path="/usersPage" element={<UsersPage />} />,
+      <Route element={<ProtectedRoute allowedRoles={["mestre"]} />}>
+        {/* Rotas para o mestre */}
+        <Route path="/monsters" element={<MonstersPage />} />
+      </Route>
+      <Route element={<ProtectedRoute allowedRoles={["jogador"]} />}>
+        {/* Rotas para os jogadores */}
+        <Route path="/usersPage" element={<UsersPage />} />
       </Route>
     </>,
   ),
