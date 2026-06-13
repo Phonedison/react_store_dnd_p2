@@ -1,91 +1,111 @@
 import { useNavigate } from 'react-router'
 import { Div } from '../../components/Div'
-// import { Button } from '../../components/Button'
+import { Button } from '../../components/Button'
 import { Navbar } from '../../components/Header'
+
+
 
 export const Home = () => {
     const navigate = useNavigate()
+    
 
   return (
     <>
       <title>D&D - Home</title>
 
       
-       <Navbar title={"Início"} /> 
+      <Navbar title={"Início"} />
       <Div className="home-container" >
-         <Div className="cabecalho" >
-
-          <Div className="titulo-home">
-             <h1>BEM VINDO À AVENTURA!</h1>
+          
+          <Div className = "cabecalho">
+            <Div className="titulo-home">
+             <h1>Bem-vindo ao seu portal de aventuras D&D!</h1>
            </Div>
-          </Div>
+
+            </Div>
+            
+            <Div className="titulo-home">
+              <h4>Crie e personalize seu personagem, organize mesas de jogo,  </h4>
+              <h4>explore um vasto catálogo de itens e descubra criaturas fascinantes em um só lugar.</h4>
+              <h4>Seja você um Mestre em busca de recursos para sua campanha ou  </h4>
+              <h4>um aventureiro preparando seu próximo herói,</h4>
+              <h4>nossa plataforma oferece as ferramentas </h4>
+              <h4>necessárias para tornar suas histórias ainda mais épicas.</h4>
+           </Div>
+
+            <Div className="titulo-home">
+             <h1>Um mundo de magia, mistérios e perigos espera por você.</h1>
+           </Div>
+         
+            <Div className="titulo-home">
+             <h2>Escolha sua próxima ação</h2>
+           </Div>
        
-      <Div className = "em-linha">
-      <Div className="cartao" onClick={() => navigate('/usersPage')}>
-      <Div className="cartao-interno">
-        <Div className="cartao-frente">
+      <Div className="home-grid">
+      <Div className="card-home" >
+      
           <Div className="avatar-circular">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWXabDIT3M_z35MUkaVDQxzZF4wy1NObBBSd6VYqH0Xw&s" 
+            <img src="https://thumbs.dreamstime.com/b/o-car%C3%A1ter-medieval-do-jogo-rpg-da-a%C3%A7%C3%A3o-fantasia-espada-protetor-cavaleiro-guerreiro-isolou-ilustra%C3%A7%C3%A3o-vetor-%C3%ADcone-122624694.jpg" 
             alt="" />
           </Div>
+        <Div className = "titulo-home"><h3>Seu herói, sua história, suas escolhas.</h3> <h4>(Acesse seu perfil)</h4><Button className = "button navigation" onClick={() => navigate('/usersPage')}> Explorar</Button></Div>
           </Div> 
-        </Div>
-     </Div>
-   
-        <Div className = "titulo-home"><h3>CRIE OU EDITE SEU PERSONAGEM</h3></Div>
-         </Div>
-    
-    <Div className = "em-linha">
-    <Div className="cartao" onClick={() => navigate('/usersPage')}>
-      <Div className="cartao-interno">
-        <Div className="cartao-frente">
-          <Div className="avatar-circular" onClick={() => navigate('/monsters')}>
+        
+      <Div className="card-home" >
+     
+          <Div className="avatar-circular">
             <img src="https://img.freepik.com/vetores-premium/design-de-logotipo-de-icone-de-monstro_775854-1726.jpg" 
             alt="" />
           </Div>
           
+        <Div className = "titulo-home"><h3>Estude seus inimigos antes que eles encontrem você.</h3> <h4>(Acesse o bestiário)</h4> <Button className = "button navigation" onClick={() => navigate('/monsters')}> Explorar</Button></Div> 
         </Div>
-      </Div>
-    </Div>
-        <Div className = "titulo-home"><h3>DESCRUBRA OS MONTROS QUE O ESPERAM EM SUA JORNADA</h3> </Div>
-  </Div>
-        
-   <Div className = "em-linha">
-    <Div className="cartao" onClick={() => navigate('/mesa')}>
-      <Div className="cartao-interno">
-        <Div className="cartao-frente">
-          <Div className="avatar-circular" onClick={() => navigate('/usersPage')}>
+      
+   
+    <Div className="card-home" >
+      
+          <Div className="avatar-circular" >
             <img src="https://img.magnific.com/vetores-gratis/icones-do-jogo-com-navio-de-pocao-de-espada-de-capacete-viking_107791-13243.jpg?semt=ais_hybrid&w=740&q=80" 
             alt="" />
           </Div>
-          
+          <Div className = "titulo-home"><h3>Explore equipamentos, tesouros e artefatos para sua jornada.</h3> <Button className = "button navigation" onClick={() => navigate('/itens')}>Explorar</Button></Div>
         </Div>
-      </Div>
-    </Div>
-     <Div className = "titulo-home"><h3>DESCUBRA ITENS ÚTEIS PARA SUAS AVENTURAS</h3> 
-        <h5>Durante sua jornada, precisará de toda ajuda possivel</h5>
-     </Div>
-  </Div>
-
-        <Div className = "em-linha">
-    <Div className="cartao" onClick={() => navigate('/mesa')}>
-      <Div className="cartao-interno">
-        <Div className="cartao-frente">
-          <Div className="avatar-circular" onClick={() => navigate('/usersPage')}>
+          
+     <Div className="card-home">
+      
+          <Div className="avatar-circular" >
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQPP6c7vS8bYfxPxEtrdnmOLbvlRHfJESiBQ&s" 
             alt="" />
           </Div>
-          
+          <Div className = "titulo-home"><h3>Crie um mundo, convide seus heróis e conte uma história épica.</h3> <h4>(Monte a sua mesa)</h4> <Button className = "button navigation" onClick={() => navigate('/mesa')}> Explorar</Button> </Div>
         </Div>
-      </Div>
-    </Div>
-     <Div className = "titulo-home"><h3>CRIE UMA MESA PARA COMEÇAR A JOGAR</h3> 
-     <h5>Crie uma mesa para começar a sua aventura</h5>
-     </Div>
-  </Div>
+        
+
+        <Div className="card-home">
+      
+          <Div className="avatar-circular" >
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWXabDIT3M_z35MUkaVDQxzZF4wy1NObBBSd6VYqH0Xw&s" 
+            alt="" />
+          </Div>
+          <Div className = "titulo-home"><h3>Você não passará!</h3><h4>(Área exclusiva para mestres)</h4> <Button className = "button navigation" onClick={() => navigate('/mestre')}>Explorar</Button> </Div>
+        </Div>
+        </Div>
+        </Div>
+    
+      
+   
+     
+ 
+     
+   
+    
+   
+ 
+        
+
    
 
-    </Div>
+ 
 
           
        

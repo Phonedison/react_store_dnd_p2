@@ -412,7 +412,7 @@ div.status-tag {
 
 div.home-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   
   width: 100%;
@@ -431,6 +431,8 @@ div.titulo-home{
    
     text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
 }
+
+
 
 
 
