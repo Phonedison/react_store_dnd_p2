@@ -9,6 +9,8 @@
  * <input type="password" placeholder="Digite sua senha" />
  * </Form>
  */
-export const Form = ({ children, ...props }) => (
-  <form {...props}>{children}</form>
+export const Form = ({ children, onSubmit, ...props }) => (
+  <form onSubmit={onSubmit} {...props}>
+    {children}
+  </form>
 );

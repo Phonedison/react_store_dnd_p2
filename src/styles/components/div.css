@@ -499,6 +499,7 @@ div.home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   
   width: 100%;
   min-height: 100vh;
@@ -516,27 +517,32 @@ div.titulo-home{
     letter-spacing: 0.1rem;
    
     text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+    
 }
 
-div.info-home-card{
-   width: 100%;
-  max-width: 80rem;
-  padding: 4rem;
-  gap: 2rem;
-  background-color: var(--paper-front);
-  border: var(--border-width) solid var(--ink);
-  border-radius: var(--sketch-radius-1);
-  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
-  background-image: repeating-linear-gradient(30deg,
-      transparent,
-      transparent 2.8rem,
-      rgba(0, 0, 0, 0.06) 2.8rem,
-      rgba(0, 0, 0, 0.06) 3rem);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  
+div.descricao-home{
+  font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--ink);
+    text-align: center;
+
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+   
+    text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+}
+
+div.home-card{
+   perspective: 100rem;
+    width: var(--card-width);
+    height: var(--card-height);
+    z-index: 2;
+    position: relative;
+    margin: 0.8rem;
+
+    &:hover div.titulo {
+      animation: balanco 0.5s ease-in-out;
+    }
 }
 
 

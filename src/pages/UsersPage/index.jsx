@@ -34,7 +34,7 @@ export const UsersPage = () => {
 
   return (
     <>
-      <title>D&D - Perfil</title>
+      <title>D&D_Wiki - Perfil</title>
       <Navbar title={"Perfil do Aventureiro"} />
       <Div className="perfil-container">
         <Div className="perfil-cabecalho"></Div>

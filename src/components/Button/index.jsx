@@ -13,8 +13,6 @@
  * </Button>
  */
 
-export const Button = ({ children, tipo, ...props }) => (
-  <button $type={tipo} {...props}>
-    {children}
-  </button>
+export const Button = ({ children, ...props }) => (
+  <button {...props}>{children}</button>
 );
