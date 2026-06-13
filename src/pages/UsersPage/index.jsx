@@ -39,7 +39,7 @@ export const UsersPage = () => {
       <Div className="perfil-container">
         <Div className="perfil-cabecalho"></Div>
         <Div className="perfil-card">
-          <Div className="titulo-cabecalho">
+          <Div>
             {/* <Button className="button return" onClick={handleVoltar}>
               Voltar
             </Button> */}
