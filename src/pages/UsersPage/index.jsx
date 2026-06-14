@@ -22,7 +22,7 @@ export const UsersPage = () => {
   const [nivel, setNivel] = useState(1);
   const [nome, setNome] = useState("Arthur Pendragon");
   const [bio, setBio] = useState(
-    "A luz do alvorecer guia minha lâmina. Não recuaremos enquanto as sombras de Barovia não forem dissipadas."
+    "A luz do alvorecer guia minha lâmina. Não recuaremos enquanto as sombras de Barovia não forem dissipadas.",
   );
 
   // Controle do modal de edição
@@ -63,7 +63,6 @@ export const UsersPage = () => {
 
       <Div className="perfil-container">
         <Div className="perfil-card">
-
           {/* Botão de edição no topo direito do card */}
           <Div className="perfil-topo-direito">
             <Button className="button edit" onClick={abrirModal}>
@@ -108,9 +107,7 @@ export const UsersPage = () => {
             <Div className="badge">
               Classe: {classeSelecionada?.name || "Não definida"}
             </Div>
-            <Div className="badge">
-              Nível: {nivel}
-            </Div>
+            <Div className="badge">Nível: {nivel}</Div>
           </Div>
 
           <Div className="quote-box">"{bio}"</Div>
@@ -143,7 +140,6 @@ export const UsersPage = () => {
               {verTodos ? "Menos" : `todas (${aventuras.length})`}
             </Button>
           )}
-
         </Div>
       </Div>
 
@@ -159,7 +155,13 @@ export const UsersPage = () => {
           loadingClasses={loadingClasses}
           racaSelecionada={racaSelecionada}
           classeSelecionada={classeSelecionada}
-          onSalvar={({ novoNome, novaBio, novoNivel, novaRaca, novaClasse }) => {
+          onSalvar={({
+            novoNome,
+            novaBio,
+            novoNivel,
+            novaRaca,
+            novaClasse,
+          }) => {
             setNome(novoNome);
             setBio(novaBio);
             setNivel(novoNivel);
