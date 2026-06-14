@@ -37,7 +37,6 @@ export const ModalEdicao = ({
       <Div className="modal-overlay" onClick={onFechar} />
 
       <Div className="modal-box" onClick={(e) => e.stopPropagation()}>
-
         <Div className="titulo titulo-alternativo">
           <h2>Editar Perfil</h2>
         </Div>
@@ -72,7 +71,9 @@ export const ModalEdicao = ({
             value={novaRaca?.index || ""}
             onChange={(e) => {
               // Encontra o objeto completo da raça pelo index selecionado
-              const racaEscolhida = racas.find((r) => r.index === e.target.value);
+              const racaEscolhida = racas.find(
+                (r) => r.index === e.target.value,
+              );
               setNovaRaca(racaEscolhida || null);
             }}
           >
@@ -94,7 +95,9 @@ export const ModalEdicao = ({
             className="input-select"
             value={novaClasse?.index || ""}
             onChange={(e) => {
-              const classeEscolhida = classes.find((c) => c.index === e.target.value);
+              const classeEscolhida = classes.find(
+                (c) => c.index === e.target.value,
+              );
               setNovaClasse(classeEscolhida || null);
             }}
           >
@@ -139,7 +142,6 @@ export const ModalEdicao = ({
             Salvar
           </Button>
         </Div>
-
       </Div>
     </>
   );

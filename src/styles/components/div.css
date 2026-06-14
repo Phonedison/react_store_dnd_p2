@@ -355,13 +355,11 @@ div.orbital-lista-box {
   border: var(--border-width) solid var(--ink);
   border-radius: var(--sketch-radius-1);
   box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
-  background-image: repeating-linear-gradient(
-    30deg,
-    transparent,
-    transparent 2.8rem,
-    rgba(0, 0, 0, 0.06) 2.8rem,
-    rgba(0, 0, 0, 0.06) 3rem
-  );
+  background-image: repeating-linear-gradient(30deg,
+      transparent,
+      transparent 2.8rem,
+      rgba(0, 0, 0, 0.06) 2.8rem,
+      rgba(0, 0, 0, 0.06) 3rem);
   padding: 2.4rem;
   display: flex;
   flex-direction: column;
@@ -528,13 +526,11 @@ div.modal-box {
   border: var(--border-width) solid var(--ink);
   border-radius: var(--sketch-radius-1);
   box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
-  background-image: repeating-linear-gradient(
-    30deg,
-    transparent,
-    transparent 2.8rem,
-    rgba(0, 0, 0, 0.06) 2.8rem,
-    rgba(0, 0, 0, 0.06) 3rem
-  );
+  background-image: repeating-linear-gradient(30deg,
+      transparent,
+      transparent 2.8rem,
+      rgba(0, 0, 0, 0.06) 2.8rem,
+      rgba(0, 0, 0, 0.06) 3rem);
   padding: 3.2rem 2.4rem 2.4rem;
   display: flex;
   flex-direction: column;
@@ -567,30 +563,31 @@ div.home-container {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  
+
   width: 100%;
   min-height: 100vh;
-  gap:6.2rem;
+  gap: 6.2rem;
 }
 
-div.titulo-home{
+
+div.titulo-home {
   font-size: 3.2rem;
-    font-weight: 900;
-    color: var(--ink);
-    text-align: center;
+  font-weight: 900;
+  color: var(--ink);
+  text-align: center;
 
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-   
-    text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
-    
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+
+  text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+
 }
 
-div.descricao-home{
+div.descricao-home {
   font-size: 2.2rem;
-    font-weight: 900;
-    color: var(--ink);
-    text-align: center;
+  font-weight: 900;
+  color: var(--ink);
+  text-align: center;
 
     text-transform: uppercase;
     letter-spacing: 0.1rem;
@@ -600,16 +597,17 @@ div.descricao-home{
 div.home-grid {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;       
+  flex-wrap: wrap;
   gap: 2.4rem;
   justify-content: center;
   width: 100%;
+  padding: 3.2rem;
   max-width: 160rem;
-  
+
 }
 
 div.card-home {
-  width: calc(50% - 1.2rem); 
+  width: calc(50% - 1.2rem);
   padding: 2.4rem;
   gap: 2rem;
   background-color: var(--paper-front);
@@ -622,9 +620,7 @@ div.card-home {
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-width: 60rem;  
+  min-width: 60rem;
+
+
 }
-
-
-
-

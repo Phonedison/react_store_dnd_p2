@@ -9,14 +9,21 @@ export const Navbar = ({ title = null, typePerfil = null }) => {
 
   const handleVoltar = () => {
     sair();
-    navigate("/login");
+    navigate("/");
   };
 
   if (!login) {
     return (
       <div>
-        <p>Você não está logado.</p>
-        <button onClick={() => navigate("/")}>Ir para Login</button>
+        <nav className="navbar">
+          <Div className="navbar-container">
+            <Div className="titulo-cabecalho">
+              <Div className="titulo" onClick={handleVoltar}>
+                D&D_Wiki
+              </Div>
+            </Div>
+          </Div>
+        </nav>
       </div>
     );
   }

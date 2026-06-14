@@ -3,6 +3,7 @@ import { UserContext } from "..";
 
 export const UserProvider = ({ children }) => {
   const [login, setLogin] = useState(null);
+
   const sair = () => setLogin(null);
 
   return (

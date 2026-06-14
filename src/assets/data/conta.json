@@ -1,0 +1,47 @@
+[
+  {
+    "nome": "Mestre do Universo",
+    "email": "fulano@email.com",
+    "login": "mestre",
+    "password": "1234",
+    "typePerfil": "mestre"
+  },
+  {
+    "nome": "Jogador Número 1",
+    "email": "jogador1@email.com",
+    "nivel": "1",
+    "raca": "Anão",
+    "classe": "Guerreiro",
+    "bio": "A luz do alvorecer guia minha lâmina. Não recuaremos enquanto as sombras de Barovia não forem dissipadas.",
+    "login": "jogador1",
+    "password": "1234",
+    "typePerfil": "jogador",
+    "aventuras": [
+      {
+        "id": 1,
+        "titulo": "A Maldição de Strahd",
+        "personagem": "Arthur, Paladino da Devoção",
+        "status": "em-andamento"
+      },
+      {
+        "id": 2,
+        "titulo": "A Mina Perdida de Phandelver",
+        "personagem": "Thorian, o Bárbaro",
+        "status": "concluida"
+      },
+      {
+        "id": 3,
+        "titulo": "O Dragão da Montanha de Gelo",
+        "personagem": "Lirien, a Elfa Arqueira",
+        "status": "concluida"
+      }
+    ]
+  },
+  {
+    "nome": "Jogador Número 2",
+    "email": "jogador2@email.com",
+    "login": "jogador2",
+    "password": "1234",
+    "typePerfil": "jogador"
+  }
+]

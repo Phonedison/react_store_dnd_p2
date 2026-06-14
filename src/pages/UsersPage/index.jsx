@@ -1,29 +1,28 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import aventuras from "../../assets/data/aventuras.json";
 import { Button } from "../../components/Button";
 import { Div } from "../../components/Div";
 import { Navbar } from "../../components/Header";
-import { useElementList } from "../../hooks";
-import { OrbitalSeletor } from "../../features/Perfil/OrbitalSeletor";
+import { useType } from "../../contexts";
 import { CardHistorico } from "../../features/Historico/CardHistorico";
 import { ModalEdicao } from "../../features/Perfil/ModalEdicao";
-import aventuras from "../../assets/data/aventuras.json";
+import { OrbitalSeletor } from "../../features/Perfil/OrbitalSeletor";
+import { useElementList } from "../../hooks";
 
 export const UsersPage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const { login } = useType();
 
   // Orbitais
   const [monstroSelecionado, setMonstroSelecionado] = useState(null);
   const [itemSelecionado, setItemSelecionado] = useState(null);
 
   // Dados do perfil editável
-  const [racaSelecionada, setRacaSelecionada] = useState(null);
-  const [classeSelecionada, setClasseSelecionada] = useState(null);
-  const [nivel, setNivel] = useState(1);
-  const [nome, setNome] = useState("Arthur Pendragon");
-  const [bio, setBio] = useState(
-    "A luz do alvorecer guia minha lâmina. Não recuaremos enquanto as sombras de Barovia não forem dissipadas.",
-  );
+  const [racaSelecionada, setRacaSelecionada] = useState(login?.raca);
+  const [classeSelecionada, setClasseSelecionada] = useState(login?.classe);
+  const [nivel, setNivel] = useState(login?.nivel);
+  const [nome, setNome] = useState(login?.nome);
+  const [bio, setBio] = useState(login?.bio);
 
   // Controle do modal de edição
   const [modalAberto, setModalAberto] = useState(false);
@@ -56,6 +55,8 @@ export const UsersPage = () => {
   const abrirModal = () => setModalAberto(true);
   const fecharModal = () => setModalAberto(false);
 
+  console.log(racaSelecionada);
+  console.log(classeSelecionada);
   return (
     <>
       <title>D&D_Wiki - Perfil</title>
@@ -102,10 +103,10 @@ export const UsersPage = () => {
 
           <Div className="perfil-badge-lista">
             <Div className="badge">
-              Raça: {racaSelecionada?.name || "Não definida"}
+              Raça: {racaSelecionada || "Não definida"}
             </Div>
             <Div className="badge">
-              Classe: {classeSelecionada?.name || "Não definida"}
+              Classe: {classeSelecionada || "Não definida"}
             </Div>
             <Div className="badge">Nível: {nivel}</Div>
           </Div>
@@ -146,6 +147,7 @@ export const UsersPage = () => {
       {/* Modal de edição */}
       {modalAberto && (
         <ModalEdicao
+          key={login.index}
           nome={nome}
           bio={bio}
           nivel={nivel}
