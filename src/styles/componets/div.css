@@ -18,7 +18,6 @@ div {
   & div.cabecalho {
     display: flex;
     margin: 2.4rem;
-    margin-top: 9.2rem;
     gap: 1.6rem;
     z-index: 5;
   }
@@ -125,12 +124,6 @@ div {
     display: flex;
     gap: 1.6rem;
     flex-direction: row;
-    align-items: center;
-
-    & span {
-      font-family: var(--lato);
-      font-size: 2rem;
-    }
   }
 
   & div.em-linha {
@@ -241,8 +234,6 @@ div.perfil-container {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  /* para evitar ficar abaixo do navbar */
-  margin-top: 9.2rem;
 }
 
 div.perfil-cabecalho {
@@ -276,13 +267,14 @@ div.perfil-card {
 div.perfil-header {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-evenly;
   width: 100%;
 }
 
 div.avatar-circular {
-  width: 26rem;
-  height: 26rem;
+  width: 25rem;
+  height: 25rem;
   border-radius: 50%;
   border: var(--border-width) solid var(--ink);
   box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
@@ -298,8 +290,8 @@ div.avatar-circular {
 }
 
 div.item-orbital {
-  width: 14rem;
-  height: 14rem;
+  width: 12rem;
+  height: 12rem;
   border-radius: 50%;
   border: var(--border-width) solid var(--ink);
   box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
@@ -315,7 +307,6 @@ div.item-orbital {
 }
 
 div.item-orbital-container {
-  max-width: 12rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -325,82 +316,6 @@ div.item-orbital-container {
     font-size: 1.6rem;
     font-weight: bold;
     font-family: var(--germania);
-    text-align: center;
-  }
-
-  & div.item-orbital {
-    overflow: hidden;
-  }
-}
-
-/* Lista de seleção que abre ao clicar no orbital */
-div.orbital-lista-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 100;
-}
-
-div.orbital-lista-box {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 101;
-  width: 90%;
-  max-width: 50rem;
-  max-height: 70vh;
-  background-color: var(--paper-front);
-  border: var(--border-width) solid var(--ink);
-  border-radius: var(--sketch-radius-1);
-  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
-  background-image: repeating-linear-gradient(
-    30deg,
-    transparent,
-    transparent 2.8rem,
-    rgba(0, 0, 0, 0.06) 2.8rem,
-    rgba(0, 0, 0, 0.06) 3rem
-  );
-  padding: 2.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-  overflow-y: auto;
-}
-
-div.orbital-lista-grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-  justify-content: center;
-}
-
-div.orbital-lista-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.8rem 1.6rem;
-  border: var(--border-width) solid transparent;
-  border-color: var(--ink);
-  box-shadow: 0.3rem 0.3rem 0 var(--ink);
-  background-color: var(--paper-back);
-  border-radius: var(--sketch-radius-btn);
-  cursor: pointer;
-  transition: all 0.15s ease;
-
-  & span {
-    font-size: 1.4rem;
-    text-align: center;
-    font-weight: 700;
-    color: var(--ink);
-  }
-
-  &:hover {
-    border-color: var(--ink);
-    box-shadow: 0.3rem 0.3rem 0 var(--ink);
-    background-color: var(--paper-front);
-    transform: translateY(-0.2rem);
   }
 }
 
@@ -495,21 +410,13 @@ div.status-tag {
   }
 }
 
-div.perfil-topo-direito {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin-bottom: 1.2rem;
-}
 div.home-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   
   width: 100%;
   min-height: 100vh;
-  gap:6.2rem;
 }
 
 
@@ -523,51 +430,12 @@ div.titulo-home{
     letter-spacing: 0.1rem;
    
     text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
-    
 }
 
-div.descricao-home{
-  font-size: 2.2rem;
-    font-weight: 900;
-    color: var(--ink);
-    text-align: center;
 
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-   
-    text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
-}
 
-div.home-grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;       
-  gap: 2.4rem;
-  justify-content: center;
-  width: 100%;
- 
-  max-width: 160rem;
-  
-}
 
-div.card-home {
-  width: calc(50% - 1.2rem); 
-  padding: 2.4rem;
-  gap: 2rem;
-  background-color: var(--paper-front);
-  border: var(--border-width) solid var(--ink);
-  border-radius: var(--sketch-radius-1);
-  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
-  background-image: repeating-linear-gradient(30deg,
-      transparent, transparent 2.8rem,
-      rgba(0, 0, 0, 0.06) 2.8rem, rgba(0, 0, 0, 0.06) 3rem);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  min-width: 60rem;
-  
-  
-}
+
 
 
 
