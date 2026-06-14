@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import listaUsuarios from "../../../assets/data/conta.json";
 import { Button } from "../../../components/Button";
 import { Div } from "../../../components/Div";
 import { Form } from "../../../components/Form";
@@ -13,12 +14,6 @@ export const Login = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [mensagem, setMensagem] = useState(null);
-
-  // passando usuários para teste
-  const usuarios = [
-    { login: "mestre", password: "1234", typePerfil: "mestre" },
-    { login: "jogador", password: "1234", typePerfil: "jogador" },
-  ];
 
   const handleClearForm = () => {
     setUser("");
@@ -40,21 +35,21 @@ export const Login = () => {
       return;
     }
 
-    const usuarioValido = usuarios.find(
+    const usuarioValido = listaUsuarios.find(
       (usuario) =>
         usuario.login === validarUsuario &&
         usuario.password === validarPassword,
     );
 
     if (usuarioValido) {
-      const perfil = usuarioValido.typePerfil;
+      const perfil = usuarioValido;
 
       setLogin(perfil);
       handleClearForm();
 
-      if (perfil === "mestre") {
+      if (perfil.typePerfil === "mestre") {
         navigate("/monsters", { state: { typePerfil: perfil } });
-      } else if (perfil === "jogador") {
+      } else if (perfil.typePerfil === "jogador") {
         navigate("/usersPage", { state: { typePerfil: perfil } });
       }
     } else {
