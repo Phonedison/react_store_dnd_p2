@@ -243,6 +243,7 @@ div.perfil-container {
   gap: 1.5rem;
   /* para evitar ficar abaixo do navbar */
   margin-top: 9.2rem;
+  padding-bottom: 3.2rem;
 }
 
 div.perfil-cabecalho {
@@ -495,6 +496,72 @@ div.status-tag {
   }
 }
 
+div.perfil-topo-direito {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+/* ================================
+   MODAL
+   ================================ */
+
+div.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+div.modal-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
+  width: 90%;
+  max-width: 44rem;
+  max-height: 85vh;
+  overflow-y: auto;
+  background-color: var(--paper-front);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  background-image: repeating-linear-gradient(
+    30deg,
+    transparent,
+    transparent 2.8rem,
+    rgba(0, 0, 0, 0.06) 2.8rem,
+    rgba(0, 0, 0, 0.06) 3rem
+  );
+  padding: 3.2rem 2.4rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+div.modal-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+
+  & label {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+}
+
+div.modal-botoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 1.6rem;
+  margin-top: 0.8rem;
+}
+
 div.home-container {
   display: flex;
   flex-direction: column;
@@ -505,7 +572,6 @@ div.home-container {
   min-height: 100vh;
   gap:6.2rem;
 }
-
 
 div.titulo-home{
   font-size: 3.2rem;
@@ -558,9 +624,7 @@ div.card-home {
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-width: 60rem;
-  
-  
+  min-width: 60rem;  
 }
 
 
