@@ -47,12 +47,16 @@ export const Login = () => {
     );
 
     if (usuarioValido) {
-      setLogin(usuarioValido.typePerfil);
+      const perfil = usuarioValido.typePerfil;
+
+      setLogin(perfil);
       handleClearForm();
-      console.log(usuarioValido);
-      navigate("/monsters", {
-        state: { typePerfil: usuarioValido.typePerfil },
-      });
+
+      if (perfil === "mestre") {
+        navigate("/monsters", { state: { typePerfil: perfil } });
+      } else if (perfil === "jogador") {
+        navigate("/usersPage", { state: { typePerfil: perfil } });
+      }
     } else {
       const msgErro = "Usuário ou senha incorretos!";
       setMensagem(msgErro);
