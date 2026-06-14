@@ -594,7 +594,6 @@ div.descricao-home{
 
     text-transform: uppercase;
     letter-spacing: 0.1rem;
-   
     text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
 }
 
@@ -605,7 +604,6 @@ div.home-grid {
   gap: 2.4rem;
   justify-content: center;
   width: 100%;
- 
   max-width: 160rem;
   
 }
