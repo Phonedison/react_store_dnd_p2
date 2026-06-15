@@ -2,20 +2,27 @@
   {
     "nome": "Mestre do Universo",
     "email": "fulano@email.com",
+    "bio": null,
     "login": "mestre",
     "password": "1234",
-    "typePerfil": "mestre"
+    "typePerfil": "mestre",
+    "nivel": null,
+    "raca": null,
+    "classe": null,
+    "monstroFavorito": null,
+    "itemFavorito": null,
+    "aventuras": []
   },
   {
     "nome": "Jogador Número 1",
     "email": "jogador1@email.com",
-    "nivel": "1",
-    "raca": "Anão",
-    "classe": "Guerreiro",
     "bio": "A luz do alvorecer guia minha lâmina. Não recuaremos enquanto as sombras de Barovia não forem dissipadas.",
     "login": "jogador1",
     "password": "1234",
     "typePerfil": "jogador",
+    "nivel": "1",
+    "raca": "Anão",
+    "classe": "Guerreiro",
     "aventuras": [
       {
         "id": 1,
@@ -40,8 +47,15 @@
   {
     "nome": "Jogador Número 2",
     "email": "jogador2@email.com",
+    "bio": "A luz do alvorecer guia minha lâmina. Não recuaremos enquanto as sombras de Barovia não forem dissipadas.",
     "login": "jogador2",
     "password": "1234",
-    "typePerfil": "jogador"
+    "typePerfil": "jogador",
+    "nivel": null,
+    "raca": null,
+    "classe": null,
+    "monstroFavorito": null,
+    "itemFavorito": null,
+    "aventuras": []
   }
 ]
