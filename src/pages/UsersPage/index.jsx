@@ -1,5 +1,4 @@
 import { useState } from "react";
-import aventuras from "../../assets/data/aventuras.json";
 import { Button } from "../../components/Button";
 import { Div } from "../../components/Div";
 import { Navbar } from "../../components/Header";
@@ -10,53 +9,71 @@ import { OrbitalSeletor } from "../../features/Perfil/OrbitalSeletor";
 import { useElementList } from "../../hooks";
 
 export const UsersPage = () => {
-  // const navigate = useNavigate();
-  const { login } = useType();
+  const { login, atualizarPerfil } = useType();
 
-  // Orbitais
-  const [monstroSelecionado, setMonstroSelecionado] = useState(null);
-  const [itemSelecionado, setItemSelecionado] = useState(null);
+  const [monstroSelecionado, setMonstroSelecionado] = useState(
+    login?.monstroFavorito ?? null
+  );
+  const [itemSelecionado, setItemSelecionado] = useState(
+    login?.itemFavorito ?? null
+  );
+  const [racaSelecionada, setRacaSelecionada] = useState(login?.raca ?? null);
+  const [classeSelecionada, setClasseSelecionada] = useState(login?.classe ?? null);
+  const [nivel, setNivel] = useState(login?.nivel ?? null);
+  const [nome, setNome] = useState(login?.nome ?? "");
+  const [bio, setBio] = useState(login?.bio ?? "");
 
-  // Dados do perfil editável
-  const [racaSelecionada, setRacaSelecionada] = useState(login?.raca);
-  const [classeSelecionada, setClasseSelecionada] = useState(login?.classe);
-  const [nivel, setNivel] = useState(login?.nivel);
-  const [nome, setNome] = useState(login?.nome);
-  const [bio, setBio] = useState(login?.bio);
-
-  // Controle do modal de edição
   const [modalAberto, setModalAberto] = useState(false);
-
-  // Controle do histórico
   const [verTodos, setVerTodos] = useState(false);
 
-  // Listas da API
   const { dados: monstros, loading: loadingMonstros } = useElementList({
     element: "monsters",
     lang: "pt-BR",
   });
-
   const { dados: itensMagicos, loading: loadingItens } = useElementList({
     element: "magic-items",
     lang: "pt-BR",
   });
-
   const { dados: racas, loading: loadingRacas } = useElementList({
     element: "races",
   });
-
   const { dados: classes, loading: loadingClasses } = useElementList({
     element: "classes",
   });
 
-  // Se verTodos for true mostra tudo, senão mostra só os dois primeiros
+  const aventuras = login?.aventuras || [];
   const aventurasVisiveis = verTodos ? aventuras : aventuras.slice(0, 2);
 
-  const abrirModal = () => setModalAberto(true);
-  const fecharModal = () => setModalAberto(false);
+  // Quando o orbital muda, atualiza o estado local e persiste
+  const handleSelecionarMonstro = (monstro) => {
+    setMonstroSelecionado(monstro);
+    atualizarPerfil({ monstroFavorito: monstro });
+  };
 
-  console.log(racaSelecionada);
-  console.log(classeSelecionada);
+  const handleSelecionarItem = (item) => {
+    setItemSelecionado(item);
+    atualizarPerfil({ itemFavorito: item });
+  };
+
+  // Quando o modal salva, atualiza os estados locais e persiste tudo de uma vez
+  const handleSalvarPerfil = ({ novoNome, novaBio, novoNivel, novaRaca, novaClasse }) => {
+    setNome(novoNome);
+    setBio(novaBio);
+    setNivel(novoNivel);
+    setRacaSelecionada(novaRaca);
+    setClasseSelecionada(novaClasse);
+
+    atualizarPerfil({
+      nome: novoNome,
+      bio: novaBio,
+      nivel: novoNivel,
+      raca: novaRaca,
+      classe: novaClasse,
+    });
+
+    setModalAberto(false);
+  };
+
   return (
     <>
       <title>D&D_Wiki - Perfil</title>
@@ -64,9 +81,9 @@ export const UsersPage = () => {
 
       <Div className="perfil-container">
         <Div className="perfil-card">
-          {/* Botão de edição no topo direito do card */}
+
           <Div className="perfil-topo-direito">
-            <Button className="button edit" onClick={abrirModal}>
+            <Button className="button edit" onClick={() => setModalAberto(true)}>
               Editar perfil
             </Button>
           </Div>
@@ -76,7 +93,7 @@ export const UsersPage = () => {
               itemSelecionado={monstroSelecionado}
               label="Monstro de estimação"
               listaItens={monstros}
-              aoSelecionar={setMonstroSelecionado}
+              aoSelecionar={handleSelecionarMonstro}
               loading={loadingMonstros}
             />
 
@@ -91,63 +108,64 @@ export const UsersPage = () => {
               itemSelecionado={itemSelecionado}
               label="Item mágico favorito"
               listaItens={itensMagicos}
-              aoSelecionar={setItemSelecionado}
+              aoSelecionar={handleSelecionarItem}
               loading={loadingItens}
             />
           </Div>
 
-          {/* Nome vem do estado — atualiza quando o modal salvar */}
           <Div className="titulo">
             <h2>{nome}</h2>
           </Div>
 
           <Div className="perfil-badge-lista">
             <Div className="badge">
-              Raça: {racaSelecionada || "Não definida"}
+              Raça: {racaSelecionada?.name || racaSelecionada || "Não definida"}
             </Div>
             <Div className="badge">
-              Classe: {classeSelecionada || "Não definida"}
+              Classe: {classeSelecionada?.name || classeSelecionada || "Não definida"}
             </Div>
-            <Div className="badge">Nível: {nivel}</Div>
+            <Div className="badge">
+              Nível: {nivel || "Não definido"}
+            </Div>
           </Div>
 
-          <Div className="quote-box">"{bio}"</Div>
+          <Div className="quote-box">
+            "{bio || "Nenhuma citação definida ainda."}"
+          </Div>
 
           <Div className="titulo titulo-alternativo">
             <h3>Últimas Aventuras</h3>
           </Div>
 
           <Div className="historico">
-            {/*
-              aventurasVisiveis já foi calculado acima com slice ou sem.
-              O map aqui não muda — só o array que ele percorre é diferente.
-            */}
-            {aventurasVisiveis.map((aventura) => (
-              <CardHistorico
-                key={aventura.id}
-                titulo={aventura.titulo}
-                personagem={aventura.personagem}
-                status={aventura.status}
-              />
-            ))}
+            {aventuras.length === 0 ? (
+              <p>Nenhuma aventura registrada ainda.</p>
+            ) : (
+              aventurasVisiveis.map((aventura) => (
+                <CardHistorico
+                  key={aventura.id}
+                  titulo={aventura.titulo}
+                  personagem={aventura.personagem}
+                  status={aventura.status}
+                />
+              ))
+            )}
           </Div>
 
-          {/* Só mostra o botão se tiver mais de 2 aventuras */}
           {aventuras.length > 2 && (
             <Button
               className="button navigation"
               onClick={() => setVerTodos(!verTodos)}
             >
-              {verTodos ? "Menos" : `todas (${aventuras.length})`}
+              {verTodos ? "Menos" : `Todas (${aventuras.length})`}
             </Button>
           )}
+
         </Div>
       </Div>
 
-      {/* Modal de edição */}
       {modalAberto && (
         <ModalEdicao
-          key={login.index}
           nome={nome}
           bio={bio}
           nivel={nivel}
@@ -157,21 +175,8 @@ export const UsersPage = () => {
           loadingClasses={loadingClasses}
           racaSelecionada={racaSelecionada}
           classeSelecionada={classeSelecionada}
-          onSalvar={({
-            novoNome,
-            novaBio,
-            novoNivel,
-            novaRaca,
-            novaClasse,
-          }) => {
-            setNome(novoNome);
-            setBio(novaBio);
-            setNivel(novoNivel);
-            setRacaSelecionada(novaRaca);
-            setClasseSelecionada(novaClasse);
-            fecharModal();
-          }}
-          onFechar={fecharModal}
+          onSalvar={handleSalvarPerfil}
+          onFechar={() => setModalAberto(false)}
         />
       )}
     </>
