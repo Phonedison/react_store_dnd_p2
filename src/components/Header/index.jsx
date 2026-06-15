@@ -3,7 +3,7 @@ import { useType } from "../../contexts";
 import { Button } from "../Button";
 import { Div } from "../Div";
 
-export const Navbar = ({ title = null, typePerfil = null }) => {
+export const Navbar = ({ title = null }) => {
   const navigate = useNavigate();
   const { login, sair } = useType();
 
@@ -55,7 +55,7 @@ export const Navbar = ({ title = null, typePerfil = null }) => {
           </Div>
         )}
 
-        {typePerfil === "jogador" && (
+        {login.typePerfil === "jogador" && (
           <Div className="container-botoes">
             <Button className="button navigation" onClick={handlePerfil}>
               Perfil
@@ -63,7 +63,7 @@ export const Navbar = ({ title = null, typePerfil = null }) => {
           </Div>
         )}
 
-        {typePerfil === "mestre" && (
+        {login.typePerfil === "mestre" && (
           <Div className="container-botoes">
             <Button className="button navigation" onClick={handleMonster}>
               Monstros

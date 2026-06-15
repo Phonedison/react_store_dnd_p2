@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/set-state-in-effect */
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { getElements } from "../services/dndAPI";
 
@@ -77,7 +78,7 @@ export const useElementListImage = (element) => {
     let request = true;
     setLoading(true);
 
-    fetch(`https://www.dnd5eapi.co${element.url}`)
+    axios(`https://www.dnd5eapi.co${element.url}`)
       .then((res) => {
         if (!res.ok) throw new Error(`Erro na requisição: ${res.status}`);
         return res.json();
