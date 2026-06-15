@@ -86,7 +86,7 @@ export const MonstersPage = () => {
             ) : (
               <div className="em-linha">
                 {monstrosDaPagina.map((inimigo) => (
-                  <CardEnemy key={inimigo.id} enemy={inimigo} />
+                  <CardEnemy key={inimigo.index} enemy={inimigo} />
                 ))}
               </div>
             )}
