@@ -7,6 +7,7 @@ import { App } from "../../App";
 import { Home } from "../../pages/HomePage";
 import { MonstersPage } from "../../pages/RpgPages/Monsters";
 import { UsersPage } from "../../pages/UsersPage";
+import { ItemsPage } from "../../pages/ItemsPage";
 import { ProtectedRoute } from "./ProtectRoutes";
 
 export const router = createBrowserRouter(
@@ -17,6 +18,7 @@ export const router = createBrowserRouter(
       <Route element={<ProtectedRoute />}>
         <Route path="/monsters" element={<MonstersPage />} />,
         <Route path="/usersPage" element={<UsersPage />} />,
+        <Route path="/items" element={<ItemsPage />} />,
       </Route>
     </>,
   ),
