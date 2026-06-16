@@ -1,0 +1,627 @@
+div {
+  box-sizing: border-box;
+
+  & div.borda-rabisco {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+  }
+
+  & div.container {
+    width: 100%;
+    height: 100%;
+    max-height: 60rem;
+  }
+
+  & div.cabecalho {
+    display: flex;
+    margin: 2.4rem;
+    margin-top: 9.2rem;
+    gap: 1.6rem;
+    z-index: 5;
+  }
+
+  & div.cartao {
+    perspective: 100rem;
+    width: var(--card-width);
+    height: var(--card-height);
+    z-index: 2;
+    position: relative;
+    margin: 0.8rem;
+
+    &:hover div.titulo {
+      animation: balanco 0.5s ease-in-out;
+    }
+  }
+
+  & div.cartao-interno {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    &.virado {
+      transform: rotateY(180deg);
+    }
+
+    &.virado:hover {
+      transform: rotateY(180deg) scale(1.03);
+    }
+  }
+
+  & div.cartao-frente,
+  & div.cartao-verso {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.4rem;
+    border: var(--border-width) solid var(--ink);
+    border-radius: var(--sketch-radius-1);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+    background-image: repeating-linear-gradient(30deg,
+        transparent,
+        transparent 2.8rem,
+        rgba(0, 0, 0, 0.06) 2.8rem,
+        rgba(0, 0, 0, 0.06) 3rem);
+    background-position: 0 1.6rem;
+  }
+
+  & div.cartao-frente {
+    background-color: var(--paper-front);
+    justify-content: flex-start;
+  }
+
+  & div.cartao-verso {
+    transform: rotateY(180deg);
+    border-radius: var(--sketch-radius-2);
+    background-color: var(--paper-back);
+  }
+
+  & div.titulo {
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: var(--ink);
+    text-align: center;
+
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    transform: rotate(-3deg);
+    text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+  }
+
+  & div.titulo-cabecalho {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 1.6rem;
+  }
+
+  & div.titulo-alternativo {
+    transform: rotate(2deg);
+    margin: 0 0 1.6rem 0;
+  }
+
+  & div.container-input {
+    position: relative;
+  }
+
+  & div.container-botoes {
+    display: flex;
+    gap: 1.6rem;
+    flex-direction: row;
+    align-items: center;
+
+    & span {
+      font-family: var(--lato);
+      font-size: 2rem;
+    }
+  }
+
+  & div.em-linha {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2.4rem;
+    justify-content: center;
+  }
+}
+
+@keyframes balanco {
+
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+
+  25% {
+    transform: rotate(2deg);
+  }
+
+  50% {
+    transform: rotate(-4deg);
+  }
+
+  75% {
+    transform: rotate(1deg);
+  }
+}
+
+div.pilha-polaroid {
+  z-index: 300;
+  width: 100%;
+  max-width: 20rem;
+  transition: 0.25s ease-in-out;
+
+  &:hover {
+    transform: rotate(5deg);
+  }
+
+  & div.cartao {
+    &:before {
+      transform: translateY(-2%) rotate(-4deg);
+    }
+
+    &::after {
+      transform: translateY(2%) rotate(4deg);
+    }
+  }
+
+  & div.polaroid {
+    aspect-ratio: 1 / 1;
+    border: 0.2rem solid;
+    background-color: var(--bg-color);
+    position: relative;
+    transition: 0.15s ease;
+    cursor: pointer;
+    width: 100%;
+    max-width: 20rem;
+    padding: 5% 5% 15% 5%;
+
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 100%;
+      max-height: 20rem;
+      width: 100%;
+      max-width: 20rem;
+      border: 0.2rem solid;
+      background-color: var(--bg-color);
+      transform-origin: center center;
+      z-index: -1;
+      transition: 0.15s ease;
+      top: 0;
+      left: 0;
+    }
+
+    &:before {
+      transform: translateY(-2%) rotate(-6deg);
+    }
+
+    &:after {
+      transform: translateY(2%) rotate(6deg);
+    }
+
+    & .img-container {
+      width: 100%;
+      max-width: 20rem;
+      border: 0.2rem solid;
+      background-color: var(--ink);
+      aspect-ratio: 1 / 1;
+      position: relative;
+
+      & img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+div.perfil-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 80rem;
+  /* para evitar ficar abaixo do navbar */
+  margin-top: 9.2rem;
+  padding-bottom: 3.2rem;
+}
+
+div.perfil-cabecalho {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+div.perfil-card {
+  width: 100%;
+  max-width: 80rem;
+  padding: 4rem;
+  gap: 2rem;
+  background-color: var(--paper-front);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  background-image: repeating-linear-gradient(30deg,
+      transparent,
+      transparent 2.8rem,
+      rgba(0, 0, 0, 0.06) 2.8rem,
+      rgba(0, 0, 0, 0.06) 3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+div.perfil-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+div.avatar-circular {
+  width: 26rem;
+  height: 26rem;
+  border-radius: 50%;
+  border: var(--border-width) solid var(--ink);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  overflow: hidden;
+  flex-shrink: 0;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+div.item-orbital {
+  width: 14rem;
+  height: 14rem;
+  border-radius: 50%;
+  border: var(--border-width) solid var(--ink);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  overflow: hidden;
+  flex-shrink: 0;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+div.item-orbital-container {
+  max-width: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  & p {
+    font-size: 1.6rem;
+    font-weight: bold;
+    font-family: var(--germania);
+    text-align: center;
+  }
+
+  & div.item-orbital {
+    overflow: hidden;
+  }
+}
+
+/* Lista de seleção que abre ao clicar no orbital */
+div.orbital-lista-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+div.orbital-lista-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
+  width: 90%;
+  max-width: 50rem;
+  max-height: 70vh;
+  background-color: var(--paper-front);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  background-image: repeating-linear-gradient(30deg,
+      transparent,
+      transparent 2.8rem,
+      rgba(0, 0, 0, 0.06) 2.8rem,
+      rgba(0, 0, 0, 0.06) 3rem);
+  padding: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  overflow-y: auto;
+}
+
+div.orbital-lista-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+div.orbital-lista-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  border: var(--border-width) solid transparent;
+  border-color: var(--ink);
+  box-shadow: 0.3rem 0.3rem 0 var(--ink);
+  background-color: var(--paper-back);
+  border-radius: var(--sketch-radius-btn);
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  & span {
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  &:hover {
+    border-color: var(--ink);
+    box-shadow: 0.3rem 0.3rem 0 var(--ink);
+    background-color: var(--paper-front);
+    transform: translateY(-0.2rem);
+  }
+}
+
+div.perfil-badge-lista {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 6rem;
+}
+
+div.badge {
+  padding: 0.6rem 1.6rem;
+  background-color: var(--paper-back);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-2);
+  box-shadow: 0.3rem 0.3rem 0 var(--ink);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  transform: rotate(-1deg);
+
+  &:nth-child(even) {
+    transform: rotate(1deg);
+    border-radius: var(--sketch-radius-1);
+  }
+}
+
+div.quote-box {
+  background-color: var(--paper-white);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  padding: 1.6rem 2.4rem;
+  font-size: 2rem;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+div.historico {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+div.historico-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.6rem 2.4rem;
+  background-color: var(--paper-front);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  gap: 1.6rem;
+
+  & h3 {
+    margin: 0;
+    font-size: 1.6rem;
+  }
+
+  & p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--input-placeholder);
+  }
+}
+
+div.status-tag {
+  padding: 0.4rem 1.2rem;
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-btn);
+  box-shadow: 0.2rem 0.2rem 0 var(--ink);
+  font-size: 1.2rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ink);
+  background-color: var(--paper-back);
+
+  &.em-andamento {
+    background-color: var(--switch-bg);
+  }
+
+  &.concluida {
+    background-color: var(--secondary-btn);
+  }
+}
+
+div.perfil-topo-direito {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+/* ================================
+   MODAL
+   ================================ */
+
+div.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+div.modal-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
+  width: 90%;
+  max-width: 44rem;
+  max-height: 85vh;
+  overflow-y: auto;
+  background-color: var(--paper-front);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  background-image: repeating-linear-gradient(30deg,
+      transparent,
+      transparent 2.8rem,
+      rgba(0, 0, 0, 0.06) 2.8rem,
+      rgba(0, 0, 0, 0.06) 3rem);
+  padding: 3.2rem 2.4rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+div.modal-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+
+  & label {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+}
+
+div.modal-botoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 1.6rem;
+  margin-top: 0.8rem;
+}
+
+div.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: 100vh;
+  gap: 6.2rem;
+}
+
+
+div.titulo-home {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--ink);
+  text-align: center;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+
+  text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+
+}
+
+div.descricao-home {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--ink);
+  text-align: center;
+
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+}
+
+div.home-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+  justify-content: center;
+  width: 100%;
+  padding: 3.2rem;
+  max-width: 160rem;
+
+}
+
+div.card-home {
+  width: calc(50% - 1.2rem);
+  padding: 2.4rem;
+  gap: 2rem;
+  background-color: var(--paper-front);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  background-image: repeating-linear-gradient(30deg,
+      transparent, transparent 2.8rem,
+      rgba(0, 0, 0, 0.06) 2.8rem, rgba(0, 0, 0, 0.06) 3rem);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 60rem;
+
+
+}

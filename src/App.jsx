@@ -1,3 +1,5 @@
+import { Login } from "./pages/AuthenticationPages/Login";
+
 export const App = () => {
-  return <div>Inicio</div>;
+  return <Login />;
 };

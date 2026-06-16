@@ -1,0 +1,17 @@
+/* Reset da página */
+@import url("./base/reset.css");
+
+/* importação da font utilizando google font */
+@import url("./base/typhography.css");
+
+/* Estilização das variaveis */
+@import url("./abstracts/variaveis.css");
+
+/* Estilização dos components */
+@import url("./components/button.css");
+@import url("./components/input.css");
+@import url("./components/div.css");
+@import url("./components/form.css");
+@import url("./components/select.css");
+@import url("./components/title.css");
+@import url("./components/navbar.css");
