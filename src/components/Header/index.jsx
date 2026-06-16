@@ -3,20 +3,27 @@ import { useType } from "../../contexts";
 import { Button } from "../Button";
 import { Div } from "../Div";
 
-export const Navbar = ({ title = null, typePerfil = null }) => {
+export const Navbar = ({ title = null }) => {
   const navigate = useNavigate();
   const { login, sair } = useType();
 
   const handleVoltar = () => {
     sair();
-    navigate("/login");
+    navigate("/");
   };
 
   if (!login) {
     return (
       <div>
-        <p>Você não está logado.</p>
-        <button onClick={() => navigate("/")}>Ir para Login</button>
+        <nav className="navbar">
+          <Div className="navbar-container">
+            <Div className="titulo-cabecalho">
+              <Div className="titulo" onClick={handleVoltar}>
+                D&D_Wiki
+              </Div>
+            </Div>
+          </Div>
+        </nav>
       </div>
     );
   }
@@ -48,7 +55,7 @@ export const Navbar = ({ title = null, typePerfil = null }) => {
           </Div>
         )}
 
-        {typePerfil === "jogador" && (
+        {login.typePerfil === "jogador" && (
           <Div className="container-botoes">
             <Button className="button navigation" onClick={handlePerfil}>
               Perfil
@@ -56,7 +63,7 @@ export const Navbar = ({ title = null, typePerfil = null }) => {
           </Div>
         )}
 
-        {typePerfil === "mestre" && (
+        {login.typePerfil === "mestre" && (
           <Div className="container-botoes">
             <Button className="button navigation" onClick={handleMonster}>
               Monstros
