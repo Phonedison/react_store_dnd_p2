@@ -50,7 +50,10 @@ export const Login = () => {
       setLogin(usuarioValido.typePerfil);
       handleClearForm();
       console.log(usuarioValido);
-      navigate("/monsters", {
+      const paginaInicial =
+        usuarioValido.typePerfil === "mestre" ? "/MasterPage" : "/monsters";
+
+      navigate(paginaInicial, {
         state: { typePerfil: usuarioValido.typePerfil },
       });
     } else {

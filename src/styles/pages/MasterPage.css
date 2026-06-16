@@ -1,0 +1,119 @@
+.master-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 9rem 2rem 1rem;
+  align-self: flex-start;
+  justify-content: flex-start;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.6rem;
+
+  width: 185rem;
+  height: 100vh;
+  margin: 0 auto;
+
+  font-size: 18px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.card {
+  padding: 2.4rem;
+  background-color: var(--paper-front);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow:
+    var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+}
+
+.campanha {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+.card,
+.card-resumo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 2.4rem;
+
+  background-color: var(--paper-front);
+  background-image: repeating-linear-gradient(30deg,
+      transparent,
+      transparent 2.8rem,
+      rgba(0, 0, 0, 0.06) 2.8rem,
+      rgba(0, 0, 0, 0.06) 3rem);
+
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+}
+
+.resumos {
+  grid-column: span 8;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6rem;
+}
+
+.iniciativa {
+  grid-column: span 3;
+}
+
+.monstro {
+  grid-column: span 3;
+}
+
+.encontro {
+  grid-column: span 2;
+}
+
+.npcs,
+.anotacoes,
+.acoes {
+  grid-column: span 4;
+}
+
+.campanha-conteudo {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 3rem;
+}
+
+.master-page .button.navigation {
+  width: 19rem;
+  height: 6rem;
+}
+
+.campanha-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--ink);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transform: rotate(-3deg);
+  text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+}
+
+.campanha-polaroid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+
+.campanha-polaroid .img-container img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.master-page img {}
