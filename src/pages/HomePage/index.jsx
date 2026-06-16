@@ -72,8 +72,8 @@ export const Home = () => {
               <img src="https://img.freepik.com/vetores-premium/design-de-logotipo-de-icone-de-monstro_775854-1726.jpg" alt="" />
             </Div>
             <Div className="titulo-home">
-              <h3>Estude seus inimigos antes que eles encontrem você.</h3>
-              <h4>(Acesse o bestiário)</h4>
+              <h3>Descubra criaturas e montros para usar em sua campanha</h3>
+              <h4>(Apenas Mestres)</h4>
               <Button
                 className="button navigation"
                 onClick={() => handleNavegar('/monsters')}
@@ -106,7 +106,7 @@ export const Home = () => {
             </Div>
             <Div className="titulo-home">
               <h3>Crie um mundo, convide seus heróis e conte uma história épica.</h3>
-              <h4>(Monte a sua mesa)</h4>
+              <h4>(Apenas Mestres)</h4>
               <Button
                 className="button navigation"
                 onClick={() => handleNavegar('/mesa')}
@@ -142,7 +142,7 @@ export const Home = () => {
             </Div>
             <Div className="titulo-home">
               <h3>Você não passará!</h3>
-              <h4>(Área exclusiva para mestres)</h4>
+             
               <Button
                 className="button navigation"
                 onClick={() => handleNavegar('/mestre')}
