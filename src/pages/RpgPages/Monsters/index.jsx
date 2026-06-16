@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import { Button } from "../../../components/Button";
-import { Div } from "../../../components/Div";
 import { Navbar } from "../../../components/Header";
 import { useType } from "../../../contexts";
 import { CardEnemy } from "../../../features/Moster/CardMonster";
@@ -32,61 +31,70 @@ export const MonstersPage = () => {
 
   return (
     <>
-      <Navbar title={"Monstros do D&D"} typePerfil={login} />
-      <title>D&D_Wiki - Monstros</title>
-      <Div className="container">
-        <Div className="cabecalho">
-          <Div className="titulo-cabecalho">
-            {!loading && (
-              <Button className="button return" onClick={handleClick}>
-                Voltar
-              </Button>
+      {login.typePerfil === "mestre" ? (
+        <>
+          <Navbar title={"Monstros do D&D"} />
+
+          <div className="container">
+            <div className="cabecalho">
+              <div className="titulo-cabecalho">
+                {!loading && (
+                  <Button className="button return" onClick={handleClick}>
+                    Voltar
+                  </Button>
+                )}
+
+                {!loading && (
+                  <div className="container-botoes">
+                    <Button
+                      className="button navigation"
+                      type="button"
+                      onClick={() => setPaginaAtual((prev) => prev - 1)}
+                      disabled={paginaAtual === 1}
+                    >
+                      Anterior
+                    </Button>
+
+                    <span>
+                      Página {paginaAtual} de {totalPaginas}
+                    </span>
+
+                    <Button
+                      className="button navigation"
+                      type="button"
+                      onClick={() => setPaginaAtual((prev) => prev + 1)}
+                      disabled={paginaAtual === totalPaginas}
+                    >
+                      Próxima
+                    </Button>
+
+                    <JSONExport
+                      element={monstrosDaPagina}
+                      nomeArquivo="monstros"
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {erro && <p className="erro-mensagem">{erro}</p>}
+
+            {loading ? (
+              <div className="titulo titulo-alternativo">
+                <h2>Loading...</h2>
+              </div>
+            ) : (
+              <div className="em-linha">
+                {monstrosDaPagina.map((inimigo) => (
+                  <CardEnemy key={inimigo.index} enemy={inimigo} />
+                ))}
+              </div>
             )}
-
-            {!loading && (
-              <Div className="container-botoes">
-                <Button
-                  className="button navigation"
-                  type="button"
-                  onClick={() => setPaginaAtual((prev) => prev - 1)}
-                  disabled={paginaAtual === 1}
-                >
-                  Anterior
-                </Button>
-
-                <span>
-                  Página {paginaAtual} de {totalPaginas}
-                </span>
-
-                <Button
-                  className="button navigation"
-                  type="button"
-                  onClick={() => setPaginaAtual((prev) => prev + 1)}
-                  disabled={paginaAtual === totalPaginas}
-                >
-                  Próxima
-                </Button>
-
-                <JSONExport element={monstrosDaPagina} nomeArquivo="monstros" />
-              </Div>
-            )}
-          </Div>
-        </Div>
-
-        {erro && <p className="erro-mensagem">{erro}</p>}
-
-        {loading ? (
-          <Div className="titulo titulo-alternativo">
-            <h2>Loading...</h2>
-          </Div>
-        ) : (
-          <Div className="em-linha">
-            {monstrosDaPagina.map((inimigo) => (
-              <CardEnemy key={inimigo.id} enemy={inimigo} />
-            ))}
-          </Div>
-        )}
-      </Div>
+          </div>
+        </>
+      ) : (
+        <Outlet />
+      )}
     </>
   );
 };
