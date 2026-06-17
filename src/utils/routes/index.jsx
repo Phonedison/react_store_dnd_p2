@@ -4,6 +4,7 @@ import {
   Route,
 } from "react-router";
 import { App } from "../../App";
+import { Home } from "../../pages/HomePage";
 import { MonstersPage } from "../../pages/RpgPages/Monsters";
 import { UsersPage } from "../../pages/UsersPage";
 import { ProtectedRoute } from "./ProtectRoutes";
@@ -11,7 +12,7 @@ import { ProtectedRoute } from "./ProtectRoutes";
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<App />} />,
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<App />} />,
       <Route element={<ProtectedRoute allowedRoles={["mestre"]} />}>
         {/* Rotas para o mestre */}
