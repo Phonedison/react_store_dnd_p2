@@ -48,6 +48,12 @@ export const Navbar = ({ title = null }) => {
     navigate("/items");
   };
 
+  const handleFicha = () => {
+    navigate("/createSheetPage");
+  };
+
+  
+
   return (
     <nav className="navbar">
       <Div className="navbar-container">
@@ -86,6 +92,10 @@ export const Navbar = ({ title = null }) => {
               Itens
             </Button>
             <Button className="button navigation" onClick={handlePerfil}>
+              Perfil
+            </Button>
+
+            <Button className="button navigation" onClick={handleFicha}>
               Fichas
             </Button>
           </Div>

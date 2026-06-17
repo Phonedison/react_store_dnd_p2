@@ -4,4 +4,53 @@
   margin-bottom: 1.6rem;
 }
 
+.sheet-header {
+    text-align: center;
+}
 
+.sheet-header h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+
+    color: #2d2d2d;
+
+    margin-bottom: 10px;
+
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+}
+
+.sheet-header h4 {
+    font-size: 1.2rem;
+
+    color: #555;
+
+    margin-bottom: 30px;
+}
+
+.sheet-title {
+    text-align: center;
+
+    font-size: 2rem;
+
+    margin: 30px 0 20px;
+
+    color: #2d2d2d;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+}
+
+.attribute-box label {
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    color: #2d2d2d;
+
+    text-align: center;
+
+    margin-bottom: 8px;
+
+    letter-spacing: 1px;
+}
