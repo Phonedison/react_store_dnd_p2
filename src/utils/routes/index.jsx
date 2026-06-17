@@ -7,20 +7,22 @@ import { App } from "../../App";
 import { Home } from "../../pages/HomePage";
 import { MonstersPage } from "../../pages/RpgPages/Monsters";
 import { UsersPage } from "../../pages/UsersPage";
+import { ItemsPage } from "../../pages/ItemsPage";
 import { ProtectedRoute } from "./ProtectRoutes";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
+   <>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<App />} />,
-      <Route element={<ProtectedRoute allowedRoles={["mestre"]} />}>
-        {/* Rotas para o mestre */}
-        <Route path="/monsters" element={<MonstersPage />} />
-      </Route>
-      <Route element={<ProtectedRoute allowedRoles={["jogador"]} />}>
-        {/* Rotas para os jogadores */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/items" element={<ItemsPage />} />
         <Route path="/usersPage" element={<UsersPage />} />
+        <Route path="/mesa" element={<MesaPage />} />
+        <Route path="/ficha" element={<FichaPage />} />
+      </Route>
+      <Route element={<ProtectedRoute allowedRoles={["mestre"]} />}>
+        <Route path="/monsters" element={<MonstersPage />} />
       </Route>
     </>,
   ),
