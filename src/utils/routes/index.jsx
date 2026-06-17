@@ -8,6 +8,7 @@ import { Home } from "../../pages/HomePage";
 import { MonstersPage } from "../../pages/RpgPages/Monsters";
 import { UsersPage } from "../../pages/UsersPage";
 import { ProtectedRoute } from "./ProtectRoutes";
+import { CreateSheetPage  } from "../../pages/CreateSheetPage";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,6 +18,7 @@ export const router = createBrowserRouter(
       <Route element={<ProtectedRoute />}>
         <Route path="/monsters" element={<MonstersPage />} />,
         <Route path="/usersPage" element={<UsersPage />} />,
+        <Route path="/createSheetPage" element={<CreateSheetPage />} />,
       </Route>
     </>,
   ),

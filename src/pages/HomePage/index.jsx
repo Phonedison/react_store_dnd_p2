@@ -87,7 +87,7 @@ export const Home = () => {
             alt="" />
           </Div>
           
-        <Div className = "titulo-home"><h3>Cada herói começa com uma história. Escreva a sua.</h3> <h4>(Crie uma ficha)</h4> <Button className = "button navigation" onClick={() => navigate('/ficha')}> Explorar</Button></Div> 
+        <Div className = "titulo-home"><h3>Cada herói começa com uma história. Escreva a sua.</h3> <h4>(Crie uma ficha)</h4> <Button className = "button navigation" onClick={() => navigate('/createSheetPage')}> Explorar</Button></Div> 
         </Div>
 
         <Div className="card-home">

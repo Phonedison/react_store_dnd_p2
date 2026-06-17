@@ -40,6 +40,12 @@ export const Navbar = ({ title = null }) => {
     navigate("/mesa");
   };
 
+  const handleFicha = () => {
+    navigate("/createSheetPage");
+  };
+
+  
+
   return (
     <nav className="navbar">
       <Div className="navbar-container">
@@ -71,6 +77,10 @@ export const Navbar = ({ title = null }) => {
 
             <Button className="button navigation" onClick={handleMesa}>
               Mesas
+            </Button>
+
+            <Button className="button navigation" onClick={handleFicha}>
+              Fichas
             </Button>
           </Div>
         )}
