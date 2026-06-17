@@ -12,13 +12,17 @@ import { ProtectedRoute } from "./ProtectRoutes";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
+   <>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<App />} />,
       <Route element={<ProtectedRoute />}>
-        <Route path="/monsters" element={<MonstersPage />} />,
-        <Route path="/usersPage" element={<UsersPage />} />,
-        <Route path="/items" element={<ItemsPage />} />,
+        <Route path="/items" element={<ItemsPage />} />
+        <Route path="/usersPage" element={<UsersPage />} />
+        <Route path="/mesa" element={<MesaPage />} />
+        <Route path="/ficha" element={<FichaPage />} />
+      </Route>
+      <Route element={<ProtectedRoute allowedRoles={["mestre"]} />}>
+        <Route path="/monsters" element={<MonstersPage />} />
       </Route>
     </>,
   ),

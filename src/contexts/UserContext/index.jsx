@@ -13,8 +13,6 @@ const salvarPerfil = (login, dados) => {
   localStorage.setItem(chaveStorage(login), JSON.stringify(dados));
 };
 
-// Tenta restaurar a sessão ao carregar o app
-// Verifica se tem um login salvo e se tem perfil correspondente
 const restaurarSessao = () => {
   const loginSalvo = localStorage.getItem(CHAVE_SESSAO);
   if (!loginSalvo) return null;
@@ -24,7 +22,6 @@ const restaurarSessao = () => {
 };
 
 export const UserProvider = ({ children }) => {
-  // useState com lazy init — tenta restaurar a sessão uma vez ao iniciar
   const [login, setLoginState] = useState(() => restaurarSessao());
 
   const setLogin = (usuarioDoJson) => {
@@ -33,7 +30,6 @@ export const UserProvider = ({ children }) => {
       ? { ...usuarioDoJson, ...dadosSalvos }
       : usuarioDoJson;
 
-    // Salva qual usuário está logado para restaurar depois
     localStorage.setItem(CHAVE_SESSAO, usuarioDoJson.login);
     setLoginState(perfilFinal);
   };
@@ -45,7 +41,6 @@ export const UserProvider = ({ children }) => {
   };
 
   const sair = () => {
-    // Remove só a sessão ativa — o perfil salvo continua para o próximo login
     localStorage.removeItem(CHAVE_SESSAO);
     setLoginState(null);
   };
