@@ -96,7 +96,7 @@ export const Home = () => {
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWXabDIT3M_z35MUkaVDQxzZF4wy1NObBBSd6VYqH0Xw&s" 
             alt="" />
           </Div>
-          <Div className = "titulo-home"><h3>Você não passará!</h3><h4>(Área exclusiva para mestres)</h4> <Button className = "button navigation" onClick={() => navigate('/mestre')}>Explorar</Button> </Div>
+          <Div className = "titulo-home"><h3>Você não passará!</h3><h4>(Área exclusiva para mestres)</h4> <Button className = "button navigation" onClick={() => navigate('/masterPage')}>Explorar</Button> </Div>
         </Div>
 
         </Div>

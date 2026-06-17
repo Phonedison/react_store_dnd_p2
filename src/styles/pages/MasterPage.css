@@ -290,11 +290,6 @@
   height: 25rem;
 }
 
-.anotacoes input{
-  width: 50rem;
-  height: 16rem;
-}
-
 .campanha-conteudo {
   display: flex;
   gap: 3rem;
@@ -382,4 +377,52 @@
   width: 2.4rem;
   height: 2.4rem;
   object-fit: contain;
+}
+
+.anotacoes-input {
+  width: 50rem;
+  height: 12rem;
+  padding: 0.8rem 1.6rem;
+  box-sizing: border-box;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink);
+  background-color: var(--bg-color);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--sketch-radius-1);
+  box-shadow: 0.3rem 0.3rem 0 var(--ink);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.anotacoes-input::placeholder {
+  color: var(--input-placeholder);
+}
+
+.anotacoes-input:hover {
+  transform: translateY(-0.2rem);
+  box-shadow: 0.4rem 0.4rem 0 var(--ink);
+}
+
+.anotacoes-input:focus,
+.anotacoes-input:focus-visible {
+  border: var(--border-width) solid var(--input-focus);
+  border-radius: var(--sketch-radius-2);
+  background-color: var(--paper-white);
+  box-shadow: 0.4rem 0.4rem 0 var(--ink);
+}
+
+.anotacoes-botoes {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.anotacoes-botoes .button {
+  width: 12rem;
+  height: 4rem;
+  font-size: 1.6rem;
+  letter-spacing: 0.1rem;
 }

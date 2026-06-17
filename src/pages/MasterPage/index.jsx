@@ -1,13 +1,34 @@
+import { useNavigate } from "react-router";
+import { useState } from "react";
 import { campanhaImg, jogadoresImg, monstroImg, bauImg, espadaImg } from "../../assets/data/imgs";
 import { Navbar } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { ImagePolaroid } from "../../components/Img";
+import { useType } from "../../contexts";
 import "../../styles/pages/MasterPage.css";
 
 export const MasterPage = () => {
+  const navigate = useNavigate();
+  const { login, atualizarPerfil } = useType();
+  const [anotacao, setAnotacao] = useState(login?.anotacoesMestre ?? "");
+  const [encontro, setEncontro] = useState("Nenhum encontro gerado");
+
+  const gerarEncontro = () => {
+    setEncontro("2 esqueletos e 1 mago sombrio");
+  };
+
+  const salvarAnotacao = () => {
+    atualizarPerfil({ anotacoesMestre: anotacao });
+  };
+
+  const limparAnotacao = () => {
+    setAnotacao("");
+    atualizarPerfil({ anotacoesMestre: "" });
+  };
+
   return (
     <>
-      <Navbar title="PAGINA DO MESTRE" typePerfil="mestre" />
+      <Navbar title={"PAGINA DO MESTRE"} typePerfil="mestre" />
 
       <main className="master-page">
         <section className="dashboard">
@@ -47,7 +68,12 @@ export const MasterPage = () => {
                 <img src={monstroImg} alt="Mostrons" />
                 <h2>Monstros</h2>
                 <strong>312</strong>
-                <Button className="button navigation">Ver monstros</Button>
+                <Button
+                  className="button navigation"
+                  onClick={() => navigate("/monsters")}
+                >
+                  Ver monstros
+                </Button>
               </div>
 
               <div className="card-resumo">
@@ -136,7 +162,11 @@ export const MasterPage = () => {
                 ⚂
               </div>
 
-              <Button className="button navigation">Gerar encontro</Button>
+              <Button className="button navigation" onClick={gerarEncontro}>
+                Gerar encontro
+              </Button>
+
+              <p>{encontro}</p>
             </div>
           </div>
 
@@ -191,7 +221,21 @@ export const MasterPage = () => {
 
             <div className="anotacoes card">
               <h2>Anotações do mestre</h2>
-              <input type="text" />
+              <textarea 
+                className="anotacoes-input"
+                value={anotacao}
+                onChange={(e) => setAnotacao(e.target.value)}
+                placeholder="Escreva suas anotações da sessão..."
+                rows={5}
+              />
+              <div className="anotacoes-botoes">
+                <Button className="button confirm" type="button" onClick={salvarAnotacao}>
+                  Salvar
+                </Button>
+                <Button className="button cancel" type="button" onClick={limparAnotacao}>
+                  Limpar
+                </Button>
+              </div>
             </div>
 
             <div className="acoes card">
@@ -201,7 +245,7 @@ export const MasterPage = () => {
                   <Button className="button navigation button-com-icone">
                     <img className="button-img" src={espadaImg} /> NOVO ENCONTRO
                   </Button>
-                  <Button className="button navigation">NOVO NPC</Button>
+                  <Button className="button navigation">ITENS</Button>
                 </div>
                 <div className="acao-coluna2">
                   <Button className="button navigation">SORTEAR MONTRO</Button>
