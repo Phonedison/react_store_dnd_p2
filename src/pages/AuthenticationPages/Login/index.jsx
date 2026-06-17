@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import listaUsuarios from "../../../assets/data/conta.json";
 import { Button } from "../../../components/Button";
 import { Div } from "../../../components/Div";
@@ -9,11 +9,14 @@ import { useType } from "../../../contexts";
 
 export const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { setLogin } = useType();
 
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [mensagem, setMensagem] = useState(null);
+
+  const caminho = location.state?.from?.pathname || "/";
 
   const handleClearForm = () => {
     setUser("");
@@ -46,19 +49,13 @@ export const Login = () => {
 
       setLogin(perfil);
       handleClearForm();
-
-      if (perfil.typePerfil === "mestre") {
-        navigate("/masterPage", { state: { typePerfil: perfil } });
-      } else if (perfil.typePerfil === "jogador") {
-        navigate("/usersPage", { state: { typePerfil: perfil } });
-      }
+      navigate(caminho, { replace: true });
     } else {
       const msgErro = "Usuário ou senha incorretos!";
       setMensagem(msgErro);
       alert(msgErro);
     }
   };
-
   return (
     <>
       <title>D&D - Login</title>
