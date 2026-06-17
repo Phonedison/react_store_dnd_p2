@@ -40,9 +40,9 @@ export const Navbar = ({ title = null }) => {
     navigate("/monsters");
   };
 
-  const handleMesa = () => {
-    navigate("/mesa");
-  };
+  // const handleMesa = () => {
+  //   navigate("/mesa");
+  // };
 
   const handleItem = () => {
     navigate("/items");
@@ -76,9 +76,9 @@ export const Navbar = ({ title = null }) => {
 
         {login.typePerfil === "mestre" && (
           <Div className="container-botoes">
-            <Button className="button navigation" onClick={handleMesa}>
+            {/* <Button className="button navigation" onClick={handleMesa}>
               Mesas
-            </Button>
+            </Button> */}
             <Button className="button navigation" onClick={handleMonster}>
               Monstros
             </Button>
