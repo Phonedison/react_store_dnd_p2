@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
+import listaUsuarios from "../../../assets/data/conta.json";
 import { Button } from "../../../components/Button";
 import { Div } from "../../../components/Div";
 import { Form } from "../../../components/Form";
@@ -8,17 +9,14 @@ import { useType } from "../../../contexts";
 
 export const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { setLogin } = useType();
 
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [mensagem, setMensagem] = useState(null);
 
-  // passando usuários para teste
-  const usuarios = [
-    { login: "mestre", password: "1234", typePerfil: "mestre" },
-    { login: "jogador", password: "1234", typePerfil: "jogador" },
-  ];
+  const caminho = location.state?.from?.pathname || "/";
 
   const handleClearForm = () => {
     setUser("");
@@ -40,31 +38,24 @@ export const Login = () => {
       return;
     }
 
-    const usuarioValido = usuarios.find(
+    const usuarioValido = listaUsuarios.find(
       (usuario) =>
         usuario.login === validarUsuario &&
         usuario.password === validarPassword,
     );
 
     if (usuarioValido) {
-      setLogin(usuarioValido.typePerfil);
+      const perfil = usuarioValido;
+
+      setLogin(perfil);
       handleClearForm();
-      console.log(usuarioValido);
-
-      let rotaDestino = "";
-      if (usuarioValido.typePerfil === "mestre") rotaDestino = "/monsters";
-      if (usuarioValido.typePerfil === "jogador") rotaDestino = "/usersPage";
-
-      navigate(rotaDestino, {
-        state: { typePerfil: usuarioValido.typePerfil },
-      });
+      navigate(caminho, { replace: true });
     } else {
       const msgErro = "Usuário ou senha incorretos!";
       setMensagem(msgErro);
       alert(msgErro);
     }
   };
-
   return (
     <>
       <title>D&D - Login</title>
