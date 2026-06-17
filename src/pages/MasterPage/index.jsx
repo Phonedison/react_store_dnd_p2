@@ -245,7 +245,7 @@ export const MasterPage = () => {
                   <Button className="button navigation button-com-icone">
                     <img className="button-img" src={espadaImg} /> NOVO ENCONTRO
                   </Button>
-                  <Button className="button navigation">ITENS</Button>
+                  <Button className="button navigation" onClick={() => navigate("/items")}>ITENS</Button>
                 </div>
                 <div className="acao-coluna2">
                   <Button className="button navigation">SORTEAR MONTRO</Button>

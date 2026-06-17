@@ -15,19 +15,12 @@ export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<App />} />,
+      <Route path="/login" element={<App />} />
       <Route element={<ProtectedRoute />}>
-<<<<<<< HEAD
-        <Route path="/monsters" element={<MonstersPage />} />,
-        <Route path="/usersPage" element={<UsersPage />} />,
-        <Route path="/masterPage" element={<MasterPage />} />,
-=======
         <Route path="/items" element={<ItemsPage />} />
         <Route path="/usersPage" element={<UsersPage />} />
-      </Route>
-      <Route element={<ProtectedRoute allowedRoles={["mestre"]} />}>
+        <Route path="/masterPage" element={<MasterPage />} />
         <Route path="/monsters" element={<MonstersPage />} />
->>>>>>> afc738bde2009eac7eb65f812f49295e5d599a2c
       </Route>
     </>,
   ),
