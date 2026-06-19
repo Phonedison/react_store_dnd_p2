@@ -34,6 +34,11 @@ div {
     &:hover div.titulo {
       animation: balanco 0.5s ease-in-out;
     }
+
+    &.sign {
+      width: 35rem;
+      height: 45rem;
+    }
   }
 
   & div.cartao-interno {
@@ -234,6 +239,15 @@ div.pilha-polaroid {
       }
     }
   }
+}
+
+div.signUp-container {
+  display: flex;
+  flex:1;
+  padding-top: 10rem;
+  gap: 10rem;
+  flex-direction: column;
+  align-items: center;
 }
 
 div.error-container {
