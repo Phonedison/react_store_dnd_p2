@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Div } from "../../components/Div";
-import { Button } from "../../components/Button";
-import { Navbar } from "../../components/Header";
+import { Div } from "../../../components/Div";
+import { Button } from "../../../components/Button";
+import { Navbar } from "../../../components/Header";
 
 export const CreateSheetPage = () => {
   const [character, setCharacter] = useState({
@@ -25,9 +25,7 @@ export const CreateSheetPage = () => {
     setCharacter({
       ...character,
       [e.target.name]:
-        e.target.type === "number"
-          ? Number(e.target.value)
-          : e.target.value,
+        e.target.type === "number" ? Number(e.target.value) : e.target.value,
     });
   };
 
@@ -41,7 +39,9 @@ export const CreateSheetPage = () => {
 
   return (
     <>
-      <Navbar />
+      <title>D&D - fichas</title>
+
+      <Navbar title={"Criação de ficha"} />
 
       <Div className="sheet-test">
         <Div className="sheet-card">
@@ -223,17 +223,10 @@ export const CreateSheetPage = () => {
                     value: createdSheet.charisma,
                   },
                 ].map((attribute) => (
-                  <div
-                    key={attribute.name}
-                    className="attribute-preview"
-                  >
-                    <span className="attribute-name">
-                      {attribute.name}
-                    </span>
+                  <div key={attribute.name} className="attribute-preview">
+                    <span className="attribute-name">{attribute.name}</span>
 
-                    <span className="attribute-value">
-                      {attribute.value}
-                    </span>
+                    <span className="attribute-value">{attribute.value}</span>
 
                     <span
                       className={`modifier ${
@@ -242,9 +235,7 @@ export const CreateSheetPage = () => {
                           : "positive"
                       }`}
                     >
-                      {getModifier(attribute.value) >= 0
-                        ? "+"
-                        : ""}
+                      {getModifier(attribute.value) >= 0 ? "+" : ""}
                       {getModifier(attribute.value)}
                     </span>
                   </div>

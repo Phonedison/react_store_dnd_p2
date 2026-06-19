@@ -150,10 +150,10 @@ export const Home = () => {
 
               <Button
                 className="button navigation"
-                onClick={() => handleNavegar("/mesa")}
+                onClick={() => handleNavegar("/tablePage")}
                 disabled={loadingRota !== null}
               >
-                {loadingRota === "/mesa"
+                {loadingRota === "/tablePage"
                   ? "Aguarde..."
                   : "Explorar"}
               </Button>
@@ -199,10 +199,10 @@ export const Home = () => {
 
               <Button
                 className="button navigation"
-                onClick={() => handleNavegar("/masterPage")}
+                onClick={() => handleNavegar("/error")}
                 disabled={loadingRota !== null}
               >
-                {loadingRota === "/masterPage"
+                {loadingRota === "/error"
                   ? "Aguarde..."
                   : "Explorar"}
               </Button>

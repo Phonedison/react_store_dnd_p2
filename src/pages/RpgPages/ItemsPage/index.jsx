@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { Button } from "../../components/Button";
-import { Div } from "../../components/Div";
-import { Navbar } from "../../components/Header";
-import { useType } from "../../contexts";
-import { CardItem } from "../../features/Item/CardItem";
-import { useElementList } from "../../hooks";
+import { Button } from "../../../components/Button";
+import { Div } from "../../../components/Div";
+import { Navbar } from "../../../components/Header";
+import { useType } from "../../../contexts";
+import { CardItem } from "../../../features/Item/CardItem";
+import { useElementList } from "../../../hooks";
 
 export const ItemsPage = () => {
   const navigate = useNavigate();
@@ -16,19 +16,19 @@ export const ItemsPage = () => {
 
   const { dados, erro, loading } = useElementList({
     element: "equipment",
-    lang: "en",
+    lang: "pt-BR",
   });
 
   const itensFiltrados =
     dados?.filter((item) =>
-      item.name.toLowerCase().includes(busca.toLowerCase())
+      item.name.toLowerCase().includes(busca.toLowerCase()),
     ) || [];
 
   const indiceUltimoItem = paginaAtual * itensPorPagina;
   const indicePrimeiroItem = indiceUltimoItem - itensPorPagina;
   const itensDaPagina = itensFiltrados.slice(
     indicePrimeiroItem,
-    indiceUltimoItem
+    indiceUltimoItem,
   );
   const totalPaginas = Math.ceil(itensFiltrados.length / itensPorPagina);
 
@@ -39,20 +39,13 @@ export const ItemsPage = () => {
 
   return (
     <>
-      <Navbar title={"Itens do D&D"} typePerfil={login} />
-      <title>D&D_Wiki - Itens</title>
+      <title>D&D - Itens</title>
+
+      <Navbar title={"Itens do D&D"} />
+
       <Div className="container">
         <Div className="cabecalho">
           <Div className="titulo-cabecalho">
-            {!loading && (
-              <Button
-                className="button return"
-                onClick={() => navigate("/")}
-              >
-                Voltar
-              </Button>
-            )}
-
             {!loading && (
               <Div className="container-botoes">
                 <Button
@@ -72,16 +65,12 @@ export const ItemsPage = () => {
                   className="button navigation"
                   type="button"
                   onClick={() => setPaginaAtual((prev) => prev + 1)}
-                  disabled={
-                    paginaAtual === totalPaginas || totalPaginas === 0
-                  }
+                  disabled={paginaAtual === totalPaginas || totalPaginas === 0}
                 >
                   Próxima
                 </Button>
               </Div>
             )}
-          </Div>
-
           {!loading && (
             <Div className="busca-container" style={{ margin: "1rem 0" }}>
               <input
@@ -90,10 +79,15 @@ export const ItemsPage = () => {
                 placeholder="Buscar item..."
                 value={busca}
                 onChange={handleBusca}
-                style={{ width: "var(--input-width)", height: "var(--input-height)" }}
+                style={{
+                  width: "var(--input-width)",
+                  height: "var(--input-height)",
+                }}
               />
             </Div>
           )}
+          </Div>
+
         </Div>
 
         {erro && <p className="erro-mensagem">{erro}</p>}
