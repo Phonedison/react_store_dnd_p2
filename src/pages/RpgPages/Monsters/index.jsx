@@ -6,6 +6,7 @@ import { useType } from "../../../contexts";
 import { CardEnemy } from "../../../features/Moster/CardMonster";
 import { useElementList } from "../../../hooks";
 import { JSONExport } from "../../../services/JsonExport";
+import { Error404Page } from "../../AuthenticationPages/Error";
 
 export const MonstersPage = () => {
   const navigate = useNavigate();
@@ -13,10 +14,6 @@ export const MonstersPage = () => {
 
   const [paginaAtual, setPaginaAtual] = useState(1);
   const itensPorPagina = 10;
-
-  const handleClick = () => {
-    navigate("/login");
-  };
 
   const { dados, erro, loading } = useElementList({
     element: "monsters",
@@ -33,17 +30,11 @@ export const MonstersPage = () => {
     <>
       {login.typePerfil === "mestre" ? (
         <>
-          <Navbar title={"Monstros do D&D"} />
+          <Navbar title={"Monstros do D&D"} typePerfil="mestre" />
 
           <div className="container">
             <div className="cabecalho">
               <div className="titulo-cabecalho">
-                {!loading && (
-                  <Button className="button return" onClick={handleClick}>
-                    Voltar
-                  </Button>
-                )}
-
                 {!loading && (
                   <div className="container-botoes">
                     <Button
@@ -93,7 +84,7 @@ export const MonstersPage = () => {
           </div>
         </>
       ) : (
-        <Outlet />
+        <Error404Page />
       )}
     </>
   );

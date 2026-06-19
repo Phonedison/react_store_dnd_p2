@@ -74,6 +74,9 @@ export const Navbar = ({ title = null }) => {
             <Button className="button navigation" onClick={handleItem}>
               Itens
             </Button>
+            <Button className="button navigation" onClick={handleFicha}>
+              Fichas
+            </Button>
             <Button className="button navigation" onClick={handlePerfil}>
               Perfil
             </Button>
@@ -91,12 +94,11 @@ export const Navbar = ({ title = null }) => {
             <Button className="button navigation" onClick={handleItem}>
               Itens
             </Button>
-            <Button className="button navigation" onClick={handlePerfil}>
-              Perfil
-            </Button>
-
             <Button className="button navigation" onClick={handleFicha}>
               Fichas
+            </Button>
+            <Button className="button navigation" onClick={handlePerfil}>
+              Perfil
             </Button>
           </Div>
         )}
