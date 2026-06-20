@@ -140,7 +140,7 @@ export const UsersPage = () => {
 
           <Div className="historico">
             {aventuras.length === 0 ? (
-              <p>Nenhuma aventura registrada ainda.</p>
+              <Div className="titulo msgHistorico">Nenhuma aventura registrada ainda.</Div>
             ) : (
               aventurasVisiveis.map((aventura) => (
                 <CardHistorico
