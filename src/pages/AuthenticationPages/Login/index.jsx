@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
-import listaUsuarios from "../../../assets/data/conta.json";
 import { Button } from "../../../components/Button";
 import { Div } from "../../../components/Div";
 import { Form } from "../../../components/Form";
 import { Input } from "../../../components/Input";
 import { useType } from "../../../contexts";
+import { getUsuarios } from "../../../services/usersStorage";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ export const Login = () => {
     setMensagem(null);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setMensagem(null);
 
@@ -32,12 +32,11 @@ export const Login = () => {
     const validarPassword = password.trim();
 
     if (!validarUsuario || !validarPassword) {
-      const msgAviso = "Por favor, preencha todos os campos!";
-      setMensagem(msgAviso);
-      alert(msgAviso);
+      setMensagem("Por favor, preencha todos os campos!");
       return;
     }
 
+    const listaUsuarios = await getUsuarios();
     const usuarioValido = listaUsuarios.find(
       (usuario) =>
         usuario.login === validarUsuario &&
@@ -45,17 +44,14 @@ export const Login = () => {
     );
 
     if (usuarioValido) {
-      const perfil = usuarioValido;
-
-      setLogin(perfil);
+      setLogin(usuarioValido);
       handleClearForm();
       navigate(caminho, { replace: true });
     } else {
-      const msgErro = "Usuário ou senha incorretos!";
-      setMensagem(msgErro);
-      alert(msgErro);
+      setMensagem("Usuário ou senha incorretos!");
     }
   };
+
   return (
     <>
       <title>D&D - Login</title>
