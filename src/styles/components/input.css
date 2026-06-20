@@ -54,3 +54,53 @@ select.input-select {
     box-shadow: 0.4rem 0.4rem 0 var(--ink);
   }
 }
+
+.sheet-form input,
+.attributes-grid input {
+    width: 100%;
+
+    padding: 14px 18px;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    color: #2d2d2d;
+
+    background: #fffdf7;
+
+    border: 3px solid #2d2d2d;
+
+    border-radius: 14px;
+
+    transition: all .2s ease;
+}
+
+.sheet-form input::placeholder,
+.attributes-grid input::placeholder {
+    color: #777;
+    font-weight: 500;
+}
+
+.sheet-form input:hover,
+.attributes-grid input:hover {
+    transform: translateY(-2px);
+}
+
+.sheet-form input:focus,
+.attributes-grid input:focus {
+    outline: none;
+
+    border-color: #49c5c1;
+
+    box-shadow: 0 0 0 4px rgba(73, 197, 193, 0.25);
+
+    transform: translateY(-2px);
+}
+
+.attribute-box input {
+    text-align: center;
+
+    font-size: 1.2rem;
+
+    font-weight: bold;
+}

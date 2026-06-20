@@ -8,3 +8,23 @@ form.container {
   flex-direction: column;
   gap: 1.6rem;
 }
+
+.sheet-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.attribute-box {
+    display: flex;
+    flex-direction: column;
+}

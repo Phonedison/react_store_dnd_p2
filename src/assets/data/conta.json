@@ -2,16 +2,41 @@
   {
     "nome": "Mestre do Universo",
     "email": "fulano@email.com",
-    "bio": null,
+    "bio": "Tecelão de mundos e destinos. Cada rolagem de dado é um fio na tapeçaria do destino dos meus jogadores.",
     "login": "mestre",
     "password": "1234",
     "typePerfil": "mestre",
-    "nivel": null,
-    "raca": null,
-    "classe": null,
-    "monstroFavorito": null,
-    "itemFavorito": null,
-    "aventuras": []
+    "nivel": "20",
+    "raca": "Humano",
+    "classe": "Mago",
+    "monstroFavorito": "Tarrasque",
+    "itemFavorito": "Cajado do Arquimago",
+    "aventuras": [
+      {
+        "id": 1,
+        "titulo": "A Maldição de Strahd",
+        "personagem": "Narrador da Campanha",
+        "status": "em-andamento"
+      },
+      {
+        "id": 2,
+        "titulo": "A Mina Perdida de Phandelver",
+        "personagem": "Narrador da Campanha",
+        "status": "concluida"
+      },
+      {
+        "id": 3,
+        "titulo": "Tirania dos Dragões",
+        "personagem": "Narrador da Campanha",
+        "status": "concluida"
+      },
+      {
+        "id": 4,
+        "titulo": "O Abismo da Loucura",
+        "personagem": "Narrador da Campanha",
+        "status": "pausada"
+      }
+    ]
   },
   {
     "nome": "Jogador Número 1",
@@ -47,15 +72,34 @@
   {
     "nome": "Jogador Número 2",
     "email": "jogador2@email.com",
-    "bio": "A luz do alvorecer guia minha lâmina. Não recuaremos enquanto as sombras de Barovia não forem dissipadas.",
+    "bio": "Nascida sob o signo da lua cheia, sigo o chamado da floresta. Que meus feitiços sejam tão certeiros quanto minha flecha.",
     "login": "jogador2",
     "password": "1234",
     "typePerfil": "jogador",
-    "nivel": null,
-    "raca": null,
-    "classe": null,
-    "monstroFavorito": null,
-    "itemFavorito": null,
-    "aventuras": []
+    "nivel": "3",
+    "raca": "Elfo",
+    "classe": "Druida",
+    "monstroFavorito": "Owlbear",
+    "itemFavorito": "Manto de Elfo",
+    "aventuras": [
+      {
+        "id": 1,
+        "titulo": "O Templo Submerso de Istus",
+        "personagem": "Sylvanna, a Guardiã da Floresta",
+        "status": "em-andamento"
+      },
+      {
+        "id": 2,
+        "titulo": "As Catacumbas de Waterdeep",
+        "personagem": "Brennan, o Ladino das Sombras",
+        "status": "concluida"
+      },
+      {
+        "id": 3,
+        "titulo": "A Torre do Feiticeiro Louco",
+        "personagem": "Sylvanna, a Guardiã da Floresta",
+        "status": "pausada"
+      }
+    ]
   }
 ]

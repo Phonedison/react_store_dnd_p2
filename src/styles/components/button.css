@@ -84,3 +84,17 @@
 
   }
 }
+
+.create-btn {
+  width: 280px;
+  margin: 3rem auto 0;
+
+  display: block;
+
+  font-size: 1.4rem;
+  letter-spacing: 0.2rem;
+}
+
+.create-btn:hover {
+  transform: translateY(-0.2rem) rotate(2deg) scale(1.03);
+}

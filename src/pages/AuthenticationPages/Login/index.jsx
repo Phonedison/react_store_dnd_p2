@@ -1,19 +1,22 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
-import listaUsuarios from "../../../assets/data/conta.json";
+import { useLocation, useNavigate } from "react-router";
 import { Button } from "../../../components/Button";
 import { Div } from "../../../components/Div";
 import { Form } from "../../../components/Form";
 import { Input } from "../../../components/Input";
 import { useType } from "../../../contexts";
+import { getUsuarios } from "../../../services/usersStorage";
 
 export const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { setLogin } = useType();
 
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [mensagem, setMensagem] = useState(null);
+
+  const caminho = location.state?.from?.pathname || "/";
 
   const handleClearForm = () => {
     setUser("");
@@ -21,7 +24,7 @@ export const Login = () => {
     setMensagem(null);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setMensagem(null);
 
@@ -29,12 +32,11 @@ export const Login = () => {
     const validarPassword = password.trim();
 
     if (!validarUsuario || !validarPassword) {
-      const msgAviso = "Por favor, preencha todos os campos!";
-      setMensagem(msgAviso);
-      alert(msgAviso);
+      setMensagem("Por favor, preencha todos os campos!");
       return;
     }
 
+    const listaUsuarios = await getUsuarios();
     const usuarioValido = listaUsuarios.find(
       (usuario) =>
         usuario.login === validarUsuario &&
@@ -42,20 +44,11 @@ export const Login = () => {
     );
 
     if (usuarioValido) {
-      const perfil = usuarioValido;
-
-      setLogin(perfil);
+      setLogin(usuarioValido);
       handleClearForm();
-
-      if (perfil.typePerfil === "mestre") {
-        navigate("/monsters", { state: { typePerfil: perfil } });
-      } else if (perfil.typePerfil === "jogador") {
-        navigate("/usersPage", { state: { typePerfil: perfil } });
-      }
+      navigate(caminho, { replace: true });
     } else {
-      const msgErro = "Usuário ou senha incorretos!";
-      setMensagem(msgErro);
-      alert(msgErro);
+      setMensagem("Usuário ou senha incorretos!");
     }
   };
 

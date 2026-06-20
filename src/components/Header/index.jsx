@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
+import { Div } from "../../components//Div";
+import { Button } from "../../components/Button";
 import { useType } from "../../contexts";
-import { Button } from "../Button";
-import { Div } from "../Div";
 
 export const Navbar = ({ title = null }) => {
   const navigate = useNavigate();
@@ -9,6 +9,10 @@ export const Navbar = ({ title = null }) => {
 
   const handleVoltar = () => {
     sair();
+    navigate("/");
+  };
+
+  const handleInicio = () => {
     navigate("/");
   };
 
@@ -36,15 +40,25 @@ export const Navbar = ({ title = null }) => {
     navigate("/monsters");
   };
 
-  const handleMesa = () => {
-    navigate("/mesa");
+  // const handleMesa = () => {
+  //   navigate("/mesa");
+  // };
+
+  const handleItem = () => {
+    navigate("/items");
   };
+
+  const handleFicha = () => {
+    navigate("/createSheetPage");
+  };
+
+  
 
   return (
     <nav className="navbar">
       <Div className="navbar-container">
         <Div className="titulo-cabecalho">
-          <Div className="titulo" onClick={handleVoltar}>
+          <Div className="titulo" onClick={handleInicio}>
             D&D_Wiki
           </Div>
         </Div>
@@ -57,6 +71,12 @@ export const Navbar = ({ title = null }) => {
 
         {login.typePerfil === "jogador" && (
           <Div className="container-botoes">
+            <Button className="button navigation" onClick={handleItem}>
+              Itens
+            </Button>
+            <Button className="button navigation" onClick={handleFicha}>
+              Fichas
+            </Button>
             <Button className="button navigation" onClick={handlePerfil}>
               Perfil
             </Button>
@@ -65,12 +85,20 @@ export const Navbar = ({ title = null }) => {
 
         {login.typePerfil === "mestre" && (
           <Div className="container-botoes">
+            {/* <Button className="button navigation" onClick={handleMesa}>
+              Mesas
+            </Button> */}
             <Button className="button navigation" onClick={handleMonster}>
               Monstros
             </Button>
-
-            <Button className="button navigation" onClick={handleMesa}>
-              Mesas
+            <Button className="button navigation" onClick={handleItem}>
+              Itens
+            </Button>
+            <Button className="button navigation" onClick={handleFicha}>
+              Fichas
+            </Button>
+            <Button className="button navigation" onClick={handlePerfil}>
+              Perfil
             </Button>
           </Div>
         )}

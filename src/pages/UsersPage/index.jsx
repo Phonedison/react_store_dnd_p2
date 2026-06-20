@@ -76,8 +76,9 @@ export const UsersPage = () => {
 
   return (
     <>
-      <title>D&D_Wiki - Perfil</title>
-      <Navbar title="Perfil do Aventureiro" />
+      <title>D&D - Perfil</title>
+
+      <Navbar title={"Perfil do Aventureiro"} />
 
       <Div className="perfil-container">
         <Div className="perfil-card">
@@ -139,7 +140,7 @@ export const UsersPage = () => {
 
           <Div className="historico">
             {aventuras.length === 0 ? (
-              <p>Nenhuma aventura registrada ainda.</p>
+              <Div className="titulo msgHistorico">Nenhuma aventura registrada ainda.</Div>
             ) : (
               aventurasVisiveis.map((aventura) => (
                 <CardHistorico
