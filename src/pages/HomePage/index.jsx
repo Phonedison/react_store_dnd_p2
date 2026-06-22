@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { Div } from "../../components/Div";
 import { Button } from "../../components/Button";
+import { Div } from "../../components/Div";
 import { Navbar } from "../../components/Header";
 
 export const Home = () => {
@@ -31,21 +31,15 @@ export const Home = () => {
         </Div>
 
         <Div className="titulo-home">
-          <h4>
-            Crie e personalize seu personagem, organize mesas de jogo,
-          </h4>
+          <h4>Crie e personalize seu personagem, organize mesas de jogo,</h4>
           <h4>
             explore um vasto catálogo de itens e descubra criaturas fascinantes
             em um só lugar.
           </h4>
-          <h4>
-            Seja você um Mestre em busca de recursos para sua campanha ou
-          </h4>
+          <h4>Seja você um Mestre em busca de recursos para sua campanha ou</h4>
           <h4>um aventureiro preparando seu próximo herói,</h4>
           <h4>nossa plataforma oferece as ferramentas</h4>
-          <h4>
-            necessárias para tornar suas histórias ainda mais épicas.
-          </h4>
+          <h4>necessárias para tornar suas histórias ainda mais épicas.</h4>
         </Div>
 
         <Div className="titulo-home">
@@ -75,9 +69,7 @@ export const Home = () => {
                 onClick={() => handleNavegar("/usersPage")}
                 disabled={loadingRota !== null}
               >
-                {loadingRota === "/usersPage"
-                  ? "Aguarde..."
-                  : "Explorar"}
+                {loadingRota === "/usersPage" ? "Aguarde..." : "Explorar"}
               </Button>
             </Div>
           </Div>
@@ -100,9 +92,7 @@ export const Home = () => {
                 onClick={() => handleNavegar("/monsters")}
                 disabled={loadingRota !== null}
               >
-                {loadingRota === "/monsters"
-                  ? "Aguarde..."
-                  : "Explorar"}
+                {loadingRota === "/monsters" ? "Aguarde..." : "Explorar"}
               </Button>
             </Div>
           </Div>
@@ -126,9 +116,7 @@ export const Home = () => {
                 onClick={() => handleNavegar("/items")}
                 disabled={loadingRota !== null}
               >
-                {loadingRota === "/itens"
-                  ? "Aguarde..."
-                  : "Explorar"}
+                {loadingRota === "/items" ? "Aguarde..." : "Explorar"}
               </Button>
             </Div>
           </Div>
@@ -153,9 +141,7 @@ export const Home = () => {
                 onClick={() => handleNavegar("/tablePage")}
                 disabled={loadingRota !== null}
               >
-                {loadingRota === "/tablePage"
-                  ? "Aguarde..."
-                  : "Explorar"}
+                {loadingRota === "/tablePage" ? "Aguarde..." : "Explorar"}
               </Button>
             </Div>
           </Div>
@@ -178,9 +164,7 @@ export const Home = () => {
                 onClick={() => handleNavegar("/createSheetPage")}
                 disabled={loadingRota !== null}
               >
-                {loadingRota === "/createSheetPage"
-                  ? "Aguarde..."
-                  : "Explorar"}
+                {loadingRota === "/createSheetPage" ? "Aguarde..." : "Explorar"}
               </Button>
             </Div>
           </Div>
@@ -202,9 +186,7 @@ export const Home = () => {
                 onClick={() => handleNavegar("/error")}
                 disabled={loadingRota !== null}
               >
-                {loadingRota === "/error"
-                  ? "Aguarde..."
-                  : "Explorar"}
+                {loadingRota === "/error" ? "Aguarde..." : "Explorar"}
               </Button>
             </Div>
           </Div>

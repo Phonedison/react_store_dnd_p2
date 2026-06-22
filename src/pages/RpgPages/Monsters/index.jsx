@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { Outlet, useNavigate } from "react-router";
 import { Button } from "../../../components/Button";
+import { Div } from "../../../components/Div";
 import { Navbar } from "../../../components/Header";
+import { Pesquisa } from "../../../components/Input";
 import { useType } from "../../../contexts";
 import { CardEnemy } from "../../../features/Moster/CardMonster";
 import { useElementList } from "../../../hooks";
-import { JSONExport } from "../../../services/JsonExport";
 import { Error404Page } from "../../AuthenticationPages/Error";
 
 export const MonstersPage = () => {
-  const navigate = useNavigate();
   const { login } = useType();
+  const [busca, setBusca] = useState("");
 
   const [paginaAtual, setPaginaAtual] = useState(1);
   const itensPorPagina = 10;
@@ -20,11 +20,24 @@ export const MonstersPage = () => {
     lang: "pt-BR",
   });
 
+  const itensFiltrados =
+    dados?.filter((item) =>
+      item.name.toLowerCase().includes(busca.toLowerCase()),
+    ) || [];
+
   const indiceUltimoItem = paginaAtual * itensPorPagina;
   const indicePrimeiroItem = indiceUltimoItem - itensPorPagina;
-  const monstrosDaPagina =
-    dados?.slice(indicePrimeiroItem, indiceUltimoItem) || [];
+  const monstrosDaPagina = itensFiltrados?.slice(
+    indicePrimeiroItem,
+    indiceUltimoItem,
+  );
+
   const totalPaginas = Math.ceil((dados?.length || 0) / itensPorPagina);
+
+  const handleBusca = (e) => {
+    setBusca(e.target.value);
+    setPaginaAtual(1);
+  };
 
   return (
     <>
@@ -32,11 +45,11 @@ export const MonstersPage = () => {
         <>
           <Navbar title={"Monstros do D&D"} typePerfil="mestre" />
 
-          <div className="container">
-            <div className="cabecalho">
-              <div className="titulo-cabecalho">
+          <Div className="container">
+            <Div className="cabecalho">
+              <Div className="titulo-cabecalho">
                 {!loading && (
-                  <div className="container-botoes">
+                  <Div className="container-botoes">
                     <Button
                       className="button navigation"
                       type="button"
@@ -59,29 +72,28 @@ export const MonstersPage = () => {
                       Próxima
                     </Button>
 
-                    <JSONExport
-                      element={monstrosDaPagina}
-                      nomeArquivo="monstros"
-                    />
-                  </div>
+                    {!loading && (
+                      <Pesquisa busca={busca} handleBusca={handleBusca} />
+                    )}
+                  </Div>
                 )}
-              </div>
-            </div>
+              </Div>
+            </Div>
 
             {erro && <p className="erro-mensagem">{erro}</p>}
 
             {loading ? (
-              <div className="titulo titulo-alternativo">
+              <Div className="titulo titulo-alternativo">
                 <h2>Loading...</h2>
-              </div>
+              </Div>
             ) : (
-              <div className="em-linha">
+              <Div className="em-linha">
                 {monstrosDaPagina.map((inimigo) => (
                   <CardEnemy key={inimigo.index} enemy={inimigo} />
                 ))}
-              </div>
+              </Div>
             )}
-          </div>
+          </Div>
         </>
       ) : (
         <Error404Page />
