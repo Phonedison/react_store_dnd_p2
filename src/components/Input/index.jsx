@@ -1,3 +1,5 @@
+import { Div } from "../Div";
+
 /**
  * Componente de Input estilizado e customizado.
  * * @component
@@ -8,4 +10,20 @@
  */
 export const Input = ({ value, onChange, ...props }) => (
   <input value={value} {...props} onChange={onChange} />
+);
+
+export const Pesquisa = ({ busca, handleBusca }) => (
+  <Div className="busca-container" style={{ margin: "1rem 0" }}>
+    <input
+      type="text"
+      className="input"
+      placeholder="Buscar monstros..."
+      value={busca}
+      onChange={handleBusca}
+      style={{
+        width: "var(--input-width)",
+        height: "var(--input-height)",
+      }}
+    />
+  </Div>
 );
